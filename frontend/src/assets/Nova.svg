@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1920"
+   height="1080"
+   viewBox="0 0 1920 1080"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   sodipodi:docname="Nova.svg"
+   inkscape:export-filename="Nova.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="false"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showborder="true"
+     borderlayer="false"
+     inkscape:zoom="0.46328317"
+     inkscape:cx="959.45639"
+     inkscape:cy="526.67573"
+     inkscape:window-width="1472"
+     inkscape:window-height="923"
+     inkscape:window-x="0"
+     inkscape:window-y="33"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient10"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#00b213;stop-opacity:1;"
+         offset="0"
+         id="stop10" />
+      <stop
+         style="stop-color:#27df38;stop-opacity:1;"
+         offset="1"
+         id="stop11" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ef0045;stop-opacity:1;"
+         offset="0"
+         id="stop3" />
+      <stop
+         style="stop-color:#f96300;stop-opacity:1;"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2"
+       id="linearGradient4"
+       x1="1029.6417"
+       y1="543.95068"
+       x2="1473.4796"
+       y2="543.95068"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.5426701,0,0,1.5426699,-832.27125,-297.72235)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient10"
+       id="linearGradient3"
+       x1="602.43823"
+       y1="507.34607"
+       x2="1564.5883"
+       y2="507.34607"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3"
+       transform="matrix(1.3118354,0,0,1.3118354,-408.02931,-140.3878)">
+      <path
+         id="text1"
+         style="font-weight:bold;font-size:851.914px;font-family:'Bangla Sangam MN';-inkscape-font-specification:'Bangla Sangam MN, Bold';mix-blend-mode:darken;fill:url(#linearGradient3);fill-opacity:1;stroke-width:4.00462"
+         d="m 910.17855,157.99178 109.58865,149.03766 h 145.6889 v 150.82937 h 152.8876 V 307.02944 h 0.042 V 157.99178 Z m -307.03909,1.07447 v 595.03089 l -0.70122,99.73705 408.19996,2.86616 L 902.09731,706.89482 756.02711,705.871 V 320.33109 L 856.644,457.85881 H 996.96321 L 777.40467,159.06625 Z m 893.39684,265.84903 -0.4826,19.61254 h 55.105 v 36.91881 l 13.4296,-0.19462 v -56.33673 z m 68.052,113.42531 -13.4296,0.19463 v 34.87384 h -58.2671 l -0.4825,19.61254 h 72.1792 z m -627.45452,29.54144 208.88852,285.52024 h 172.3214 V 567.88203 h -152.8876 v 119.27761 l -87.6459,-119.27761 z" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:94.3236px;font-family:Groote;-inkscape-font-specification:'Groote, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:url(#linearGradient4);fill-opacity:1;stroke-width:3.65968"
+         x="751.41003"
+         y="590.93384"
+         id="text30"
+         transform="scale(1.0561432,0.94684132)"><tspan
+           sodipodi:role="line"
+           id="tspan30"
+           x="751.41003"
+           y="590.93384"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:94.3236px;font-family:Groote;-inkscape-font-specification:'Groote, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:url(#linearGradient4);fill-opacity:1;stroke-width:3.65968">NovaMatriX</tspan></text>
+    </g>
+  </g>
+</svg>
