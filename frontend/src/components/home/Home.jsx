@@ -2,7 +2,6 @@ import HeroSection from "../HeroSection";
 import TechStackSection from "../TechStackSection";
 import ContactSection from "../ContactSection";
 import FAQSection from "../FAQSection";
-import LeadershipSection from "../LeadershipSection";
 import MissionVisionSection from "../MissionVisionSection";
 import ProcessSection from "../ProcessSection";
 import ServicesSection from "../ServicesSection";
@@ -18,7 +17,6 @@ const Home = () => {
       <WhyChooseUs />
       <MissionVisionSection />
       <ContactSection />
-      <LeadershipSection />
     </div>
   );
 };

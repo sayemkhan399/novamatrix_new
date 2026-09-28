@@ -1,32 +1,32 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, ExternalLink, Sparkles } from "lucide-react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Marquee from "react-fast-marquee";
-import { ExternalLink, Sparkles, ArrowRight } from "lucide-react";
 
 import {
-  FaGithub,
-  FaReact,
-  FaVuejs,
-  FaPython,
-  FaJava,
-  FaPhp,
-  FaLaravel,
   FaDocker,
+  FaGithub,
+  FaJava,
+  FaLaravel,
+  FaPhp,
+  FaPython,
+  FaReact,
   FaRust,
   FaSwift,
+  FaVuejs,
 } from "react-icons/fa";
 import {
   SiDjango,
   SiFlask,
-  SiSpring,
-  SiKotlin,
   SiFlutter,
-  SiKubernetes,
   SiGraphql,
-  SiPostgresql,
-  SiMysql,
+  SiKotlin,
+  SiKubernetes,
   SiMongodb,
+  SiMysql,
+  SiPostgresql,
   SiRedis,
+  SiSpring,
 } from "react-icons/si";
 
 // Fix for Vite default export resolution
@@ -177,29 +177,11 @@ export default function Portfolio() {
       ? projects
       : projects.filter((project) => project.category === filter);
 
-  const getColorClass = (color, type = "bg") => {
-    if (color === "emerald") {
-      return type === "bg"
-        ? "bg-emerald-50/40 border-emerald-200/60"
-        : "text-emerald-600";
-    }
-    return type === "bg"
-      ? "bg-green-50/40 border-green-200/60"
-      : "text-green-600";
-  };
-
   const getTagClass = (color) => {
     if (color === "emerald") {
-      return "bg-emerald-100/70 text-emerald-700";
+      return "border-emerald-200 bg-emerald-50 text-emerald-800";
     }
-    return "bg-green-100/70 text-green-700";
-  };
-
-  const getHoverClass = (color) => {
-    if (color === "emerald") {
-      return "group-hover:shadow-[0_20px_60px_rgba(16,185,129,0.2)] group-hover:border-emerald-300/80";
-    }
-    return "group-hover:shadow-[0_20px_60px_rgba(34,197,94,0.2)] group-hover:border-green-300/80";
+    return "border-green-200 bg-green-50 text-green-800";
   };
 
   return (
@@ -261,8 +243,6 @@ export default function Portfolio() {
           viewport={{ once: true }}
           className="mt-20 py-10"
         >
-
-
           <div className="space-y-4 overflow-hidden relative">
             {/* Fade Gradients at Edges */}
             <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-24 bg-gradient-to-r from-white to-transparent" />
@@ -316,73 +296,59 @@ export default function Portfolio() {
         </motion.div>
 
         {/* Featured Project */}
-        <motion.div
+        <motion.article
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          whileHover={{ y: -8 }}
-          className="mt-28 overflow-hidden rounded-[36px] border border-emerald-200/50 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 shadow-2xl hover:shadow-3xl transition-all duration-300"
+          className="mt-24 grid overflow-hidden rounded-[32px] border border-neutral-200 bg-white shadow-[0_14px_50px_rgba(15,23,42,0.08)] lg:grid-cols-[1.05fr_0.95fr]"
         >
-          <div className="absolute inset-0 bg-grid-white/5 [background-size:20px_20px]" />
-
-          <div className="relative grid lg:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="p-10 md:p-14 lg:p-16 flex flex-col justify-center"
-            >
-              <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 backdrop-blur px-4 py-2 text-sm font-semibold text-emerald-300 w-fit">
-                Featured Project
-              </span>
-
-              <h2 className="mt-8 text-4xl lg:text-5xl font-black text-white leading-tight">
-                Enterprise SaaS Platform
-              </h2>
-
-              <p className="mt-7 text-lg leading-relaxed text-gray-300 font-medium">
-                A scalable enterprise solution serving thousands of users with
-                real-time analytics, cloud infrastructure, advanced automation
-                workflows, and dedicated support.
-              </p>
-
-              <div className="mt-10 flex flex-wrap gap-3">
-                {["Next.js", "PostgreSQL", "AWS", "Stripe"].map((tech, i) => (
-                  <span
-                    key={i}
-                    className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold backdrop-blur"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.05, x: 4 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-10 flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-green-500 px-8 py-4 font-bold text-white shadow-lg hover:shadow-xl transition-all duration-300 w-fit"
-              >
-                View Case Study
-                <ArrowRight size={20} />
-              </motion.button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative h-[300px] lg:h-auto overflow-hidden"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200"
-                alt="Enterprise Platform"
-                className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-l from-gray-900/60 to-transparent" />
-            </motion.div>
+          <div className="relative min-h-[280px] overflow-hidden bg-emerald-50 sm:min-h-[380px] lg:min-h-[520px]">
+            <img
+              src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200"
+              alt="Team collaborating on an enterprise software platform"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/30 via-transparent to-transparent" />
+            <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/95 px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] text-emerald-800 shadow-sm sm:left-7 sm:top-7">
+              <Sparkles size={14} />
+              Selected work
+            </span>
           </div>
-        </motion.div>
+
+          <div className="flex flex-col justify-center p-6 sm:p-9 md:p-12">
+            <p className="text-sm font-bold uppercase tracking-[0.12em] text-emerald-700">
+              Enterprise · SaaS
+            </p>
+            <h2 className="mt-4 text-3xl font-black leading-tight text-neutral-950 sm:text-4xl">
+              Enterprise SaaS Platform
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg">
+              A scalable enterprise solution serving thousands of users with
+              real-time analytics, cloud infrastructure, advanced automation
+              workflows, and dedicated support.
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-2">
+              {["Next.js", "PostgreSQL", "AWS", "Stripe"].map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full border border-neutral-200 bg-neutral-50 px-3.5 py-2 text-xs font-semibold text-neutral-700 sm:text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href="/Contact"
+              className="mt-8 inline-flex min-h-12 w-fit items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
+            >
+              Discuss a similar project
+              <ArrowRight size={18} />
+            </a>
+          </div>
+        </motion.article>
 
         {/* Filters */}
         <motion.div
@@ -422,83 +388,78 @@ export default function Portfolio() {
             className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
           >
             {filteredProjects.map((project) => (
-              <motion.div
+              <motion.article
                 key={project.id}
                 layout
                 variants={itemVariants}
-                whileHover={{ y: -12 }}
-                className={`group overflow-hidden rounded-[28px] border-2 ${getColorClass(project.color, "bg")} ${getHoverClass(project.color)} bg-gradient-to-br from-white/60 via-white/40 to-white/60 shadow-lg hover:shadow-2xl backdrop-blur-xl transition-all duration-300`}
+                whileHover={{ y: -5 }}
+                className="group overflow-hidden rounded-[24px] border border-neutral-200 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.05)] transition-shadow duration-300 hover:shadow-[0_18px_46px_rgba(15,23,42,0.12)]"
               >
                 {/* Image Container */}
-                <div className="relative overflow-hidden h-[280px]">
+                <div className="relative aspect-[16/10] overflow-hidden bg-emerald-50">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-125"
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  {/* Action Buttons */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileHover={{ opacity: 1, scale: 1 }}
-                    className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  <span
+                    className={`absolute left-4 top-4 inline-flex rounded-full border px-3.5 py-2 text-xs font-bold capitalize ${getTagClass(project.color)}`}
                   >
-                    <motion.a
-                      href={project.live}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/95 backdrop-blur text-gray-900 shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      <ExternalLink size={20} />
-                    </motion.a>
-
-                    <motion.a
-                      href={project.github}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/95 backdrop-blur text-gray-900 shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      <FaGithub size={20} />
-                    </motion.a>
-                  </motion.div>
-
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span
-                      className={`inline-block px-4 py-2 rounded-full text-xs font-bold backdrop-blur ${getTagClass(project.color)}`}
-                    >
-                      {project.category.charAt(0).toUpperCase() +
-                        project.category.slice(1)}
-                    </span>
-                  </div>
+                    {project.category}
+                  </span>
+                  <span className="absolute bottom-4 right-4 rounded-full border border-white/80 bg-white/95 px-3 py-1.5 text-xs font-bold tabular-nums text-neutral-600">
+                    {String(project.id).padStart(2, "0")}
+                  </span>
                 </div>
 
                 {/* Content */}
-                <div className="p-8">
-                  <h3 className="text-2xl font-black text-gray-900">
+                <div className="p-5 sm:p-6">
+                  <h3 className="text-xl font-bold leading-snug text-neutral-950 sm:text-2xl">
                     {project.title}
                   </h3>
 
-                  <p className="mt-4 leading-relaxed text-gray-700 font-medium">
+                  <p className="mt-3 min-h-[3.5rem] text-sm leading-relaxed text-neutral-600 sm:text-base">
                     {project.description}
                   </p>
 
                   {/* Tags */}
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {project.tags.map((tag, i) => (
+                  <div className="mt-5 flex flex-wrap gap-2 border-t border-neutral-100 pt-4">
+                    {project.tags.map((tag) => (
                       <span
-                        key={i}
-                        className={`rounded-full px-3.5 py-1.5 text-xs font-bold backdrop-blur ${getTagClass(project.color)}`}
+                        key={tag}
+                        className="rounded-full bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-600"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
+
+                  {(project.live !== "#" || project.github !== "#") && (
+                    <div className="mt-5 flex gap-2">
+                      {project.live !== "#" && (
+                        <a
+                          href={project.live}
+                          aria-label={`Open ${project.title} live project`}
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-700 transition-colors hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
+                        >
+                          <ExternalLink size={17} />
+                        </a>
+                      )}
+                      {project.github !== "#" && (
+                        <a
+                          href={project.github}
+                          aria-label={`Open ${project.title} source code`}
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-700 transition-colors hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
+                        >
+                          <FaGithub size={17} />
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </motion.div>
         </AnimatePresence>

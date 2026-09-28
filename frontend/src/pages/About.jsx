@@ -1,17 +1,13 @@
-import React from "react";
+
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   Sparkles,
-  Target,
-  Rocket,
   ShieldCheck,
   Award,
   Lightbulb,
   Globe,
   CheckCircle2,
-  TrendingUp,
-  Users,
   Code2,
   Palette,
   Layers3,

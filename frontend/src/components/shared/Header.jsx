@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { X, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import logo from "../../assets/Nova.svg";
-import { RiMenu3Fill, RiMenu5Fill } from "react-icons/ri";
+
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/About" },
@@ -27,10 +27,18 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+    if (!menuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
     };
   }, [menuOpen]);
 
@@ -43,10 +51,14 @@ const Header = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3">
-            <img src={logo} alt="Logo" className="h-16 w-auto" />
+            <img
+              src={logo}
+              alt="NovaMatrix home"
+              className="h-12 w-auto md:h-16"
+            />
           </a>
 
           {/* Desktop Nav */}
@@ -79,10 +91,12 @@ const Header = () => {
             {/* Mobile Button */}
             <button
               onClick={() => setMenuOpen(true)}
-              className="md:hidden rounded-xl p-2 text-gray-700 hover:bg-emerald-50"
-              aria-label="Open menu"
+              aria-label="Open navigation menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-200 bg-white/90 text-neutral-800 shadow-sm transition-colors hover:bg-emerald-50 md:hidden"
             >
-              <RiMenu3Fill size={30} />
+              <Menu size={23} strokeWidth={2} />
             </button>
           </div>
         </div>
@@ -90,155 +104,92 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-50 md:hidden transition-all duration-300 ${
-          menuOpen ? "visible opacity-100" : "invisible opacity-0"
+        id="mobile-navigation"
+        className={`fixed inset-0 z-50 md:hidden transition-[visibility,opacity] duration-300 motion-reduce:transition-none ${
+          menuOpen
+            ? "visible pointer-events-auto opacity-100"
+            : "invisible pointer-events-none opacity-0"
         }`}
+        aria-hidden={!menuOpen}
       >
-        {/* Background */}
         <div
-          className="absolute inset-0 bg-black/80 backdrop-blur-xl"
+          className="absolute inset-0 bg-neutral-950/40 transition-opacity"
           onClick={() => setMenuOpen(false)}
+          aria-hidden="true"
         />
 
-        {/* Full Screen Menu */}
         <div
-          className={`relative flex h-full w-full flex-col bg-white backdrop-blur-2xl transition-all duration-500 ${
-            menuOpen ? "translate-y-0" : "-translate-y-full"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+          className={`absolute right-0 top-0 flex h-dvh w-[min(88vw,24rem)] flex-col border-l border-emerald-100 bg-[#f7fffa] px-6 pb-6 pt-[max(1.5rem,env(safe-area-inset-top))] shadow-2xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
+            menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          {/* Header */}
-          <div className="flex items-center justify-between px-6 py-6 border-b border-white/10">
-            <img src={logo} alt="Logo" className="h-14 w-auto" />
-
-            <button
+          <div className="flex items-center justify-between border-b border-emerald-100 pb-5">
+            <a
+              href="/"
               onClick={() => setMenuOpen(false)}
-              className="rounded-xl p-2 text-black hover:bg-white/10"
+              aria-label="NovaMatrix home"
             >
-              <RiMenu5Fill size={28} />
-            </button>
+              <img src={logo} alt="NovaMatrix" className="h-11 w-auto" />
+            </a>
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-emerald-700">
+                Menu
+              </span>
+              <button
+                onClick={() => setMenuOpen(false)}
+                aria-label="Close navigation menu"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-emerald-200 bg-white text-neutral-700 transition-colors hover:bg-emerald-50"
+              >
+                <X size={20} />
+              </button>
+            </div>
           </div>
 
-{/* Navigation */}
-<nav className="flex flex-1 flex-col items-center justify-center gap-4 px-6">
-  {navigation.map((item) => (
-    <a
-      key={item.name}
-      href={item.href}
-      onClick={() => setMenuOpen(false)}
-      className="
-        group
-        relative
-        w-full
-        max-w-sm
-        overflow-hidden
-        rounded-2xl
-        border
-        border-slate-200
-        bg-gradient-to-r
-        from-white
-        to-slate-50
-        px-6
-        py-4
-        text-center
-        shadow-sm
-        transition-all
-        duration-300
-        ease-out
+          <nav aria-label="Main navigation" className="flex-1 pt-6">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-neutral-400">
+              Explore
+            </p>
+            <div className="divide-y divide-emerald-100">
+              {navigation.map((item, index) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="group flex min-h-14 items-center justify-between gap-4 py-3 text-neutral-800 transition-colors hover:text-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+                >
+                  <span className="flex items-center gap-4">
+                    <span className="w-6 font-mono text-xs text-emerald-600/70">
+                      0{index + 1}
+                    </span>
+                    <span className="text-lg font-semibold">{item.name}</span>
+                  </span>
+                  <ChevronRight
+                    size={18}
+                    className="text-neutral-400 transition-transform group-hover:translate-x-1 group-hover:text-emerald-600"
+                  />
+                </a>
+              ))}
+            </div>
+          </nav>
 
-        hover:-translate-y-1
-        hover:scale-[1.02]
-        hover:border-transparent
-        hover:shadow-2xl
-      "
-    >
-      {/* Gradient Background */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-gradient-to-r
-          from-[#f95d04]
-          via-[#f32e25]
-          to-[#f1093f]
-          opacity-0
-          transition-opacity
-          duration-300
-          group-hover:opacity-100
-        "
-      />
-
-      {/* Text */}
-      <span
-        className="
-          relative
-          z-10
-          text-lg
-          font-semibold
-          text-slate-800
-          transition-colors
-          duration-300
-          group-hover:text-white
-        "
-      >
-        {item.name}
-      </span>
-
-      {/* Arrow */}
-      <ArrowUpRight
-        size={18}
-        className="
-          absolute
-          right-5
-          top-1/2
-          z-10
-          -translate-y-1/2
-          opacity-0
-          transition-all
-          duration-300
-          group-hover:translate-x-1
-          group-hover:opacity-100
-          text-white
-        "
-      />
-    </a>
-  ))}
-
-  {/* CTA */}
-  <a
-    href="#contact"
-    onClick={() => setMenuOpen(false)}
-    className="
-      mt-8
-      flex
-      items-center
-      justify-center
-      gap-2
-      rounded-full
-      bg-gradient-to-r
-      from-[#f95d04]
-      via-[#f32e25]
-      to-[#f1093f]
-      px-8
-      py-4
-      text-lg
-      font-semibold
-      text-white
-      shadow-xl
-      transition-all
-      duration-300
-      hover:scale-105
-      hover:shadow-2xl
-      hover:shadow-orange-300/30
-    "
-  >
-    Start Project
-    <ArrowUpRight size={20} />
-  </a>
-</nav>
-
-          {/* Footer */}
-          <div className="pb-8 text-center text-sm text-black">
-            © 2026 Nova Studio
+          <div className="border-t border-emerald-100 pt-5">
+            <p className="mb-4 text-sm text-neutral-600">
+              Have a project in mind?
+            </p>
+            <a
+              href="/Contact"
+              onClick={() => setMenuOpen(false)}
+              className="flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#f95d04] via-[#f32e25] to-[#f1093f] px-5 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+            >
+              Start a project
+              <ArrowUpRight size={17} />
+            </a>
+            <p className="mt-5 text-center text-xs text-neutral-400">
+              © 2026 NovaMatrix
+            </p>
           </div>
         </div>
       </div>
