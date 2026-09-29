@@ -4,44 +4,61 @@ import { ArrowRight } from "lucide-react";
 const services = [
   {
     id: 1,
-    title: "UI UX",
-    description: "Make a Design that speaks for itself",
+    title: "Web Application Development",
+    description:
+      "Deliver high-performance, responsive web applications built with modern frameworks to provide seamless user experiences across all devices.",
     image:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1600&q=80",
   },
   {
     id: 2,
-    title: "AI",
+    title: "Mobile App Development",
     description:
-      "Integrate AI in your business. Automate every task in your business",
+      "Engineer native and cross-platform mobile solutions for iOS and Android, turning complex business requirements into intuitive handheld experiences.",
     image:
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1600&q=80",
   },
   {
     id: 3,
-    title: "LMS",
-    description: "Get your own Learning Management System",
+    title: "UI/UX Design",
+    description:
+      "Craft intuitive, user-centered digital interfaces that elevate user engagement and boost conversion rates through data-driven design systems.",
     image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1600&q=80",
   },
   {
     id: 4,
-    title: "Cyber Security",
+    title: "AI & Machine Learning Solutions",
     description:
-      "Protect your systems with enterprise-grade security and monitoring.",
+      "Streamline operations and drive intelligent decision-making by integrating custom AI models, predictive analytics, and process automation into your workflow.",
     image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=80",
   },
   {
     id: 5,
-    title: "IT Consulting",
+    title: "Learning Management Systems (LMS)",
     description:
-      "Strategic consulting services to accelerate digital transformation.",
+      "Build scalable, interactive e-learning platforms tailored for corporate training, educational institutions, and online course providers.",
     image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1600&q=80",
+  },
+  {
+    id: 6,
+    title: "Cybersecurity & Compliance",
+    description:
+      "Safeguard your critical infrastructure with end-to-end encryption, continuous threat monitoring, vulnerability assessments, and regulatory compliance solutions.",
+    image:
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1600&q=80",
+  },
+  {
+    id: 7,
+    title: "Strategic IT Consulting",
+    description:
+      "Align technology initiatives with business objectives through expert guidance on cloud architecture, digital transformation, and legacy system modernization.",
+    image:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
   },
 ];
-
 export default function StackedServicesSection() {
   return (
     <div className="relative z-10 mx-auto max-w-5xl py-12">

@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import PinnedProcess from "./PinnedProcess";
 import StackedServicesSection from "./StackedServicesSection";
+import PricingPlans from "./PricingPlans";
 
 export default function Services() {
   return (
@@ -146,6 +147,8 @@ export default function Services() {
       </section>
 
       <PinnedProcess />
+
+      <PricingPlans/>
 
       <section className="bg-[#f7fffa] px-4 pb-20 sm:px-6 md:pb-28">
         <motion.div

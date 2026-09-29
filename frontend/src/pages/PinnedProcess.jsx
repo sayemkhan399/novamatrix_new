@@ -179,6 +179,7 @@ export default function PinnedProcess() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-slate-100/60 blur-[120px]" />
         <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-blue-50/40 blur-[150px]" />
 
+
         {/* Top Vignette Blur */}
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white via-white/80 to-transparent backdrop-blur-[8px]" />
 

@@ -91,12 +91,12 @@ export default function FooterSection() {
 
             <div className="flex items-center gap-3">
               <Mail size={16} />
-              hello@novamatrix.com
+              novamatrixtech@gmail.com
             </div>
 
             <div className="flex items-center gap-3">
               <Phone size={16} />
-              +880 17XX XXX XXX
+              +8801768639060
             </div>
 
             <div className="flex items-center gap-3">
