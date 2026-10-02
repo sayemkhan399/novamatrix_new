@@ -1,9 +1,8 @@
-
 import { motion } from "framer-motion";
 import { ArrowUpRight, Phone } from "lucide-react";
 
 export default function HeroSection() {
-  const reviews = ["James Carter", "Alex Mitchel"];
+  const reviews = ["Software Development", "UI/UX & Graphic Design"];
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#f7fffa] px-4 py-10 md:px-8 lg:px-12">
@@ -36,12 +35,12 @@ export default function HeroSection() {
 
           {/* Text */}
           <span className="text-sm font-medium text-gray-700">
-            Available
+            Software & design
           </span>
 
           {/* CTA */}
           <button className="flex items-center gap-1 text-sm font-semibold text-emerald-700 transition hover:text-emerald-600">
-            Join Now
+            <a href="/Services">See our services</a>
             <ArrowUpRight size={16} />
           </button>
         </motion.div>
@@ -53,7 +52,7 @@ export default function HeroSection() {
           className="absolute left-0 top-1/3 hidden max-w-[260px] -rotate-12 rounded-3xl border border-emerald-100 bg-white p-6 shadow-xl xl:block"
         >
           <p className="text-sm text-gray-600">
-            “A visually stunning website optimized for conversions.”
+            “Custom software for websites, apps, and digital products.”
           </p>
           <p className="mt-4 font-semibold text-gray-900">— {reviews[0]}</p>
         </motion.div>
@@ -65,7 +64,7 @@ export default function HeroSection() {
           className="absolute right-0 top-1/3 hidden max-w-[260px] rotate-12 rounded-3xl border border-emerald-100 bg-white p-6 shadow-xl xl:block"
         >
           <p className="text-sm text-gray-600">
-            “Fast, focused, and detail-driven product design.”
+            “UI/UX and graphic design for digital products and brands.”
           </p>
           <p className="mt-4 font-semibold text-gray-900">— {reviews[1]}</p>
         </motion.div>
@@ -77,11 +76,11 @@ export default function HeroSection() {
           transition={{ delay: 0.2 }}
           className="max-w-5xl text-3xl font-bold tracking-tight text-gray-950 sm:text-5xl md:text-6xl"
         >
-          World-Class Design
+          Software, UI/UX &
           <br />
           Built For{" "}
           <span className="bg-gradient-to-r from-green-500 via-emerald-600 to-lime-500 bg-clip-text text-transparent">
-            Business Growth
+            Digital Products
           </span>
         </motion.h1>
 
@@ -92,8 +91,8 @@ export default function HeroSection() {
           transition={{ delay: 0.3 }}
           className="mt-6 max-w-3xl text-base leading-relaxed text-gray-600 sm:text-lg"
         >
-          We craft apps, websites, SaaS platforms, landing pages, dashboards,
-          and brand experiences built for growth and performance.
+          NovaMatrix creates custom software, user experiences, and graphic
+          design for websites, apps, and digital brands.
         </motion.p>
 
         {/* Buttons */}
@@ -123,9 +122,8 @@ export default function HeroSection() {
           transition={{ delay: 0.6 }}
           className="mt-12 flex flex-col items-center gap-4"
         >
-
           <p className="text-sm text-gray-600">
-            Trusted by 200+ growing brands
+            Software Development · UI/UX Design · Graphic Design
           </p>
         </motion.div>
       </div>

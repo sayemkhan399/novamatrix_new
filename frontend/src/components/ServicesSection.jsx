@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  Monitor,
-  PenTool,
   Code2,
   Layers3,
+  Monitor,
   Palette,
+  PenTool,
 } from "lucide-react";
 
 const fadeUp = {
@@ -14,9 +14,9 @@ const fadeUp = {
 };
 
 const services = {
-  uiux: ["Design", "Research", "UX Audit", "Prototype"],
-  web: ["Frontend", "Backend", "API", "Maintenance"],
-  brand: ["Logo", "Branding", "Packaging", "Marketing"],
+  uiux: ["User flows", "Wireframes", "Interfaces", "Prototypes"],
+  web: ["Websites", "Web apps", "Mobile apps", "Integrations"],
+  brand: ["Brand graphics", "Campaigns", "Social media", "Marketing"],
 };
 
 const Tag = ({ text }) => (
@@ -63,7 +63,6 @@ export default function ServicesSection() {
   return (
     <section className="bg-[#f7fffa] px-4 py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-7xl">
-
         {/* Badge */}
         <div className="mb-6 flex items-center  gap-3">
           <div className="h-3 w-3 border-l-2 border-t-2 border-green-500" />
@@ -81,10 +80,10 @@ export default function ServicesSection() {
           variants={fadeUp}
           className="max-w-5xl text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-950"
         >
-          From ideas into high-impact solutions
+          Software and design for digital products
           <br />
           <span className="text-neutral-400">
-            That inspires and converts
+            From concept to visual detail
           </span>
         </motion.h2>
 
@@ -100,8 +99,8 @@ export default function ServicesSection() {
           <div className="xl:col-span-4 xl:row-span-2">
             <ServiceCard
               icon={PenTool}
-              title="Web & App UI/UX Design"
-              description="Beautiful digital experiences designed for usability, engagement, and conversion."
+              title="UI/UX Design"
+              description="User flows, wireframes, interface design, and prototypes for websites and apps."
               tags={services.uiux}
               className="xl:min-h-[540px]"
             />
@@ -111,8 +110,8 @@ export default function ServicesSection() {
           <div className="xl:col-span-8">
             <ServiceCard
               icon={Code2}
-              title="Web Development"
-              description="Scalable, high-performance web platforms built for business growth."
+              title="Software Development"
+              description="Websites, web applications, and mobile software built around project requirements."
               tags={services.web}
               className="min-h-[260px]"
             />
@@ -122,8 +121,8 @@ export default function ServicesSection() {
           <div className="xl:col-span-8">
             <ServiceCard
               icon={Palette}
-              title="Creative Design & Branding"
-              description="Build memorable brands with strategic identity systems and modern visuals."
+              title="Graphic Design"
+              description="Visual assets for brands and digital products, including campaign and social media graphics."
               tags={services.brand}
               className="min-h-[260px]"
             />
@@ -133,8 +132,8 @@ export default function ServicesSection() {
           <div className="xl:col-span-8">
             <ServiceCard
               icon={Layers3}
-              title="MVP Design & Development"
-              description="Validate product ideas quickly through lean MVP design and rapid development."
+              title="Product Design & Development"
+              description="Bring software development, user experience design, and graphic design together for a digital product."
               tags={["Prototype", "Launch", "Testing", "Scale"]}
               className="min-h-[260px]"
             />
@@ -150,9 +149,9 @@ export default function ServicesSection() {
 
             <div>
               <h3 className="text-2xl md:text-3xl font-semibold leading-tight">
-                World-class Design.
+                Software & Design.
                 <br />
-                Growth-focused Strategy.
+                Made for your product.
               </h3>
             </div>
 

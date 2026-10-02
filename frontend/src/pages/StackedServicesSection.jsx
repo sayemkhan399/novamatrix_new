@@ -1,12 +1,11 @@
-
 import { ArrowRight } from "lucide-react";
 
 const services = [
   {
     id: 1,
-    title: "Web Application Development",
+    title: "Software Development",
     description:
-      "Deliver high-performance, responsive web applications built with modern frameworks to provide seamless user experiences across all devices.",
+      "Develop websites and web applications around your product requirements and users.",
     image:
       "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1600&q=80",
   },
@@ -14,7 +13,7 @@ const services = [
     id: 2,
     title: "Mobile App Development",
     description:
-      "Engineer native and cross-platform mobile solutions for iOS and Android, turning complex business requirements into intuitive handheld experiences.",
+      "Design and develop mobile applications for iOS and Android based on your project requirements.",
     image:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1600&q=80",
   },
@@ -22,39 +21,39 @@ const services = [
     id: 3,
     title: "UI/UX Design",
     description:
-      "Craft intuitive, user-centered digital interfaces that elevate user engagement and boost conversion rates through data-driven design systems.",
+      "Design user flows, interfaces, wireframes, and prototypes for websites and applications.",
     image:
       "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1600&q=80",
   },
   {
     id: 4,
-    title: "AI & Machine Learning Solutions",
+    title: "Graphic Design",
     description:
-      "Streamline operations and drive intelligent decision-making by integrating custom AI models, predictive analytics, and process automation into your workflow.",
+      "Create visual assets for brands, campaigns, and digital products.",
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=80",
   },
   {
     id: 5,
-    title: "Learning Management Systems (LMS)",
+    title: "Graphic Design for Digital Channels",
     description:
-      "Build scalable, interactive e-learning platforms tailored for corporate training, educational institutions, and online course providers.",
+      "Design campaign graphics, social media assets, and other digital marketing visuals.",
     image:
       "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1600&q=80",
   },
   {
     id: 6,
-    title: "Cybersecurity & Compliance",
+    title: "Brand Graphics",
     description:
-      "Safeguard your critical infrastructure with end-to-end encryption, continuous threat monitoring, vulnerability assessments, and regulatory compliance solutions.",
+      "Create consistent visual materials for a brand across its digital channels.",
     image:
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1600&q=80",
   },
   {
     id: 7,
-    title: "Strategic IT Consulting",
+    title: "Product Design & Development",
     description:
-      "Align technology initiatives with business objectives through expert guidance on cloud architecture, digital transformation, and legacy system modernization.",
+      "Combine software development, UI/UX design, and graphic design to support a digital product.",
     image:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
   },
@@ -75,7 +74,6 @@ export default function StackedServicesSection() {
           >
             {/* Card Container - Strict 16:9 Aspect Ratio */}
             <div className="relative aspect-video w-full overflow-hidden rounded-[28px] sm:rounded-[40px] shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-gray-100">
-              
               {/* 1. Base Image */}
               <img
                 src={service.image}
@@ -84,7 +82,7 @@ export default function StackedServicesSection() {
               />
 
               {/* 2. PURE GRADIENT SMOOKY BOTTOM (No backdrop-blur to prevent scroll bugs) */}
-              <div 
+              <div
                 className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 z-10"
                 style={{
                   background: `linear-gradient(
@@ -120,7 +118,6 @@ export default function StackedServicesSection() {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         ))}

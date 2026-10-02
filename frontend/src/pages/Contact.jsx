@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 

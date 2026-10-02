@@ -1,42 +1,112 @@
-
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  Sparkles,
-  ShieldCheck,
   Award,
-  Lightbulb,
-  Globe,
   CheckCircle2,
   Code2,
-  Palette,
+  Globe,
   Layers3,
+  Lightbulb,
+  Palette,
   Play,
+  ShieldCheck,
+  Sparkles,
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import LeadershipSection from "../components/LeadershipSection";
 
+function AnimatedStat({ number, label }) {
+  const target = Number(number.replace(/[^0-9]/g, ""));
+  const suffix = number.replace(/[0-9]/g, "");
+  const [count, setCount] = useState(() =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    !("IntersectionObserver" in window)
+      ? target
+      : 0,
+  );
+  const statRef = useRef(null);
+
+  useEffect(() => {
+    const stat = statRef.current;
+    if (!stat) return;
+
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !("IntersectionObserver" in window)
+    )
+      return;
+
+    let animationFrameId;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        observer.disconnect();
+        const startTime = performance.now();
+        const duration = 1200;
+
+        const animate = (time) => {
+          const progress = Math.min((time - startTime) / duration, 1);
+          const easedProgress = 1 - Math.pow(1 - progress, 4);
+          setCount(Math.round(target * easedProgress));
+
+          if (progress < 1) {
+            animationFrameId = requestAnimationFrame(animate);
+          }
+        };
+
+        animationFrameId = requestAnimationFrame(animate);
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(stat);
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [target]);
+
+  return (
+    <>
+      <h3
+        ref={statRef}
+        aria-label={`${number} ${label}`}
+        className="text-4xl font-black bg-gradient-to-r from-[#f95d04] to-[#f1093f] bg-clip-text text-transparent md:text-5xl"
+      >
+        {count}
+        {suffix}
+      </h3>
+      <p className="mt-3 text-sm font-medium text-neutral-500 md:text-base">
+        {label}
+      </p>
+    </>
+  );
+}
+
 const stats = [
-  { number: "150+", label: "Projects Completed" },
-  { number: "50+", label: "Global Clients" },
-  { number: "9+", label: "Years Experience" },
-  { number: "98%", label: "Client Satisfaction" },
+  { number: "50", label: "Software Development" },
+  { number: "60", label: "UI/UX Design" },
+  { number: "20", label: "Graphic Design" },
+  { number: "50", label: "Digital Products" },
 ];
 
 const services = [
   {
     icon: Palette,
     title: "UI/UX Design",
-    desc: "Beautiful user experiences designed for engagement and conversions.",
+    desc: "User flows, wireframes, interface design, and prototypes for websites and apps.",
   },
   {
     icon: Code2,
     title: "Web Development",
-    desc: "Scalable modern applications built with performance in mind.",
+    desc: "Websites, web applications, and mobile software developed around project requirements.",
   },
   {
     icon: Layers3,
-    title: "Brand Identity",
-    desc: "Strong branding systems that create memorable impressions.",
+    title: "Graphic Design",
+    desc: "Brand graphics and visual assets for digital products and campaigns.",
   },
 ];
 
@@ -107,7 +177,7 @@ export default function AboutSection() {
           <div className="inline-flex items-center gap-3 rounded-full border border-neutral-200 bg-white/80 px-5 py-2 backdrop-blur shadow-sm">
             <Sparkles size={16} className="text-emerald-600" />
             <span className="text-sm font-medium text-neutral-700">
-              About Our Digital Studio
+              Software & Design Company
             </span>
           </div>
         </motion.div>
@@ -121,12 +191,10 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="text-4xl font-black leading-[1.05] tracking-tight text-neutral-950 sm:text-6xl lg:text-7xl"
           >
-            Crafting premium digital
-            <br />
-            products for ambitious
+            Software, UI/UX and graphic design for digital products and
             <span className="bg-gradient-to-r from-green-500 via-emerald-600 to-lime-500 bg-clip-text text-transparent">
               {" "}
-              modern brands.
+              businesses.
             </span>
           </motion.h1>
 
@@ -137,10 +205,8 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-neutral-600 md:text-xl"
           >
-            We combine strategy, design, and engineering to build
-            scalable experiences that help startups and businesses
-            grow faster, convert better, and stand out in competitive
-            markets.
+            NovaMatrix develops software and designs user experiences and
+            graphic assets for websites, applications, and digital brands.
           </motion.p>
 
           {/* Buttons */}
@@ -151,10 +217,9 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-
             <button className="flex items-center gap-3 rounded-full border border-neutral-300 bg-white px-8 py-4 text-sm font-semibold text-black transition hover:bg-neutral-100">
               <Play size={16} />
-              Watch Showreel
+              Explore Our Services
             </button>
           </motion.div>
         </div>
@@ -168,18 +233,8 @@ export default function AboutSection() {
           className="mt-20 grid grid-cols-2 gap-5 lg:grid-cols-4"
         >
           {stats.map((item, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ y: -6 }}
-              className="rounded-[28px] border border-neutral-200 bg-white p-7 shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
-            >
-              <h3 className="text-4xl font-black  md:text-5xl bg-gradient-to-r from-[#f95d04] to-[#f1093f] bg-clip-text text-transparent">
-                {item.number}
-              </h3>
-
-              <p className="mt-3 text-sm font-medium text-neutral-500 md:text-base">
-                {item.label}
-              </p>
+            <motion.div key={index} className=" flex gap-5 p-7 ">
+              <AnimatedStat number={item.number} label={item.label} />
             </motion.div>
           ))}
         </motion.div>
@@ -202,19 +257,16 @@ export default function AboutSection() {
             </span>
 
             <h2 className="mt-6 max-w-2xl text-3xl font-black leading-tight text-black md:text-5xl">
-              Building digital experiences
-              that inspire and convert.
+              Software and design for digital products.
             </h2>
 
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-600">
-              Since day one, we've partnered with startups, SaaS
-              companies, and modern businesses to create scalable
-              digital products focused on growth, performance, and
-              exceptional user experience.
+              We work across software development, UI/UX design, and graphic
+              design to support websites, apps, and digital product experiences.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
-              {["Strategy", "Design", "Development", "Growth"].map(
+              {["Software", "UI/UX", "Graphic Design", "Digital Products"].map(
                 (item, i) => (
                   <span
                     key={i}
@@ -222,7 +274,7 @@ export default function AboutSection() {
                   >
                     {item}
                   </span>
-                )
+                ),
               )}
             </div>
           </motion.div>
@@ -283,14 +335,12 @@ export default function AboutSection() {
               </span>
 
               <h2 className="mt-6 text-4xl font-black leading-tight text-white md:text-6xl">
-                Strategy, creativity &
-                technology working together.
+                Software, UI/UX & graphic design working together.
               </h2>
 
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300">
-                We help businesses create premium digital experiences
-                that improve engagement, accelerate growth, and build
-                stronger brands.
+                We work on software, interfaces, and graphic assets for
+                websites, applications, and digital brands.
               </p>
 
               <button className="mt-10 flex items-center gap-3 rounded-full bg-white px-7 py-4 font-semibold text-black transition hover:scale-105">
@@ -314,7 +364,8 @@ export default function AboutSection() {
                   <div>
                     <h4 className="font-semibold text-white">{item}</h4>
                     <p className="mt-1 text-sm text-neutral-400">
-                      Premium digital workflow designed for efficiency.
+                      Software and design work shaped around project
+                      requirements.
                     </p>
                   </div>
                 </motion.div>
@@ -373,7 +424,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <LeadershipSection/>
+        <LeadershipSection />
 
         {/* FINAL CTA */}
         <motion.div
@@ -384,19 +435,14 @@ export default function AboutSection() {
           className="mt-28 text-center"
         >
           <div className="mx-auto max-w-4xl rounded-[40px] border border-neutral-200 bg-white px-8 py-14 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
-            <Globe
-              size={40}
-              className="mx-auto mb-6 text-emerald-600"
-            />
+            <Globe size={40} className="mx-auto mb-6 text-emerald-600" />
 
             <h2 className="text-4xl font-black leading-tight text-black md:text-5xl">
-              Ready to build something
-              extraordinary together?
+              Ready to build something extraordinary together?
             </h2>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-600">
-              Let's create scalable digital experiences that elevate
-              your brand and accelerate business growth.
+              Tell us about your software, UI/UX, or graphic design project.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

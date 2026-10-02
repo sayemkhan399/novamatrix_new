@@ -35,78 +35,77 @@ const MarqueeComponent = Marquee.default || Marquee;
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    category: "web",
+    title: "Web & Application Development",
+    category: "Software",
     description:
-      "Full-stack e-commerce solution with payment integration and advanced dashboard.",
+      "Plan and develop websites and web applications around product requirements.",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
+    tags: ["Websites", "Web apps", "Software"],
     live: "#",
     github: "#",
     color: "emerald",
   },
   {
     id: 2,
-    title: "Mobile Banking App",
-    category: "mobile",
-    description:
-      "Secure banking experience with modern UI and real-time transactions.",
+    title: "Mobile App Development",
+    category: "Software",
+    description: "Design and develop mobile applications for iOS and Android.",
     image:
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200",
-    tags: ["React Native", "Firebase", "Security"],
+    tags: ["iOS", "Android", "Mobile software"],
     live: "#",
     github: "#",
     color: "green",
   },
   {
     id: 3,
-    title: "Cloud Analytics",
-    category: "cloud",
+    title: "UI/UX Design",
+    category: "UI/UX Design",
     description:
-      "Real-time business analytics platform powered by cloud infrastructure.",
+      "Create user flows, wireframes, interface designs, and prototypes for digital products.",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200",
-    tags: ["AWS", "Analytics", "Dashboard"],
+    tags: ["User flows", "Interfaces", "Prototypes"],
     live: "#",
     github: "#",
     color: "emerald",
   },
   {
     id: 4,
-    title: "Healthcare System",
-    category: "web",
+    title: "Product Interface Design",
+    category: "UI/UX Design",
     description:
-      "Complete healthcare management software for clinics and hospitals.",
+      "Design clear interfaces for websites, applications, and digital services.",
     image:
       "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200",
-    tags: ["Next.js", "PostgreSQL", "Healthcare"],
+    tags: ["Wireframes", "UI design", "Prototypes"],
     live: "#",
     github: "#",
     color: "green",
   },
   {
     id: 5,
-    title: "AI Assistant",
-    category: "mobile",
+    title: "Graphic Design",
+    category: "Graphic Design",
     description:
-      "AI-powered chatbot solution with intelligent customer support.",
+      "Create graphic assets for brands, campaigns, and digital channels.",
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200",
-    tags: ["OpenAI", "Python", "ML"],
+    tags: ["Brand graphics", "Campaigns", "Digital assets"],
     live: "#",
     github: "#",
     color: "emerald",
   },
   {
     id: 6,
-    title: "Enterprise ERP",
-    category: "cloud",
+    title: "Brand & Digital Graphics",
+    category: "Graphic Design",
     description:
-      "Scalable enterprise management platform with cloud architecture.",
+      "Design visual materials for brand identity, marketing, and social media.",
     image:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200",
-    tags: ["Azure", ".NET", "Enterprise"],
+    tags: ["Visual identity", "Marketing", "Social media"],
     live: "#",
     github: "#",
     color: "green",
@@ -216,22 +215,21 @@ export default function Portfolio() {
             className="inline-flex items-center gap-2 rounded-full border border-emerald-200/80 bg-emerald-50/60 backdrop-blur px-4 py-2.5 text-sm font-semibold text-emerald-700"
           >
             <Sparkles size={16} />
-            Portfolio Showcase
+            Software & Design Services
           </motion.span>
 
           <h1 className="mt-8 text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-gray-900">
-            Our Recent
+            Software & Design
             <span className="relative inline-block mx-3">
               <span className="bg-gradient-to-r from-green-500 via-emerald-600 to-lime-500 bg-clip-text text-transparent">
-                Projects
+                Services
               </span>
             </span>
           </h1>
 
           <p className="mx-auto mt-7 max-w-3xl text-xl leading-relaxed text-gray-600 font-medium">
-            Explore our portfolio of innovative digital products, enterprise
-            platforms, mobile applications, and cloud solutions that drive real
-            business impact.
+            Explore NovaMatrix services across software development, UI/UX
+            design, and graphic design.
           </p>
         </motion.div>
 
@@ -306,45 +304,46 @@ export default function Portfolio() {
           <div className="relative min-h-[280px] overflow-hidden bg-emerald-50 sm:min-h-[380px] lg:min-h-[520px]">
             <img
               src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200"
-              alt="Team collaborating on an enterprise software platform"
+              alt="Team discussing software and design"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/30 via-transparent to-transparent" />
             <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/95 px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] text-emerald-800 shadow-sm sm:left-7 sm:top-7">
               <Sparkles size={14} />
-              Selected work
+              Service areas
             </span>
           </div>
 
           <div className="flex flex-col justify-center p-6 sm:p-9 md:p-12">
             <p className="text-sm font-bold uppercase tracking-[0.12em] text-emerald-700">
-              Enterprise · SaaS
+              SOFTWARE · UI/UX · GRAPHIC DESIGN
             </p>
             <h2 className="mt-4 text-3xl font-black leading-tight text-neutral-950 sm:text-4xl">
-              Enterprise SaaS Platform
+              Software and design services
             </h2>
             <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg">
-              A scalable enterprise solution serving thousands of users with
-              real-time analytics, cloud infrastructure, advanced automation
-              workflows, and dedicated support.
+              NovaMatrix works on software development, user experience design,
+              and graphic assets for websites, apps, and digital products.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-2">
-              {["Next.js", "PostgreSQL", "AWS", "Stripe"].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full border border-neutral-200 bg-neutral-50 px-3.5 py-2 text-xs font-semibold text-neutral-700 sm:text-sm"
-                >
-                  {tech}
-                </span>
-              ))}
+              {["Software Development", "UI/UX Design", "Graphic Design"].map(
+                (tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full border border-neutral-200 bg-neutral-50 px-3.5 py-2 text-xs font-semibold text-neutral-700 sm:text-sm"
+                  >
+                    {tech}
+                  </span>
+                ),
+              )}
             </div>
 
             <a
               href="/Contact"
               className="mt-8 inline-flex min-h-12 w-fit items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
             >
-              Discuss a similar project
+              Discuss your software or design project
               <ArrowRight size={18} />
             </a>
           </div>
@@ -357,24 +356,26 @@ export default function Portfolio() {
           viewport={{ once: true }}
           className="mt-24 flex flex-wrap justify-center gap-4"
         >
-          {["all", "web", "mobile", "cloud"].map((cat, index) => (
-            <motion.button
-              key={cat}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setFilter(cat)}
-              className={`rounded-full px-7 py-3 font-bold transition-all duration-300 ${
-                filter === cat
-                  ? "bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-500/30"
-                  : "border-2 border-emerald-200/50 bg-gradient-to-br from-emerald-50/40 to-green-50/40 text-gray-700 hover:border-emerald-400 hover:shadow-lg"
-              }`}
-            >
-              {cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </motion.button>
-          ))}
+          {["all", "Software", "UI/UX Design", "Graphic Design"].map(
+            (cat, index) => (
+              <motion.button
+                key={cat}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setFilter(cat)}
+                className={`rounded-full px-7 py-3 font-bold transition-all duration-300 ${
+                  filter === cat
+                    ? "bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-500/30"
+                    : "border-2 border-emerald-200/50 bg-gradient-to-br from-emerald-50/40 to-green-50/40 text-gray-700 hover:border-emerald-400 hover:shadow-lg"
+                }`}
+              >
+                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </motion.button>
+            ),
+          )}
         </motion.div>
 
         {/* Projects */}
@@ -488,8 +489,8 @@ export default function Portfolio() {
             </h2>
 
             <p className="mx-auto mt-7 max-w-2xl text-lg lg:text-xl text-white/90 font-medium">
-              Partner with us to build scalable digital products that create
-              real business impact and drive growth for your organization.
+              Tell us what you need to build or design, and we can discuss the
+              software, UI/UX, or graphic design scope.
             </p>
 
             <motion.button
@@ -497,7 +498,7 @@ export default function Portfolio() {
               whileTap={{ scale: 0.95 }}
               className="mt-12 rounded-full bg-white px-10 py-5 text-lg font-bold text-emerald-600 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              Start Your Project
+              Start a Software or Design Project
             </motion.button>
           </motion.div>
         </motion.div>

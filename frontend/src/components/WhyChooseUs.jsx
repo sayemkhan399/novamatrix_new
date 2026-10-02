@@ -1,48 +1,48 @@
 import { motion } from "framer-motion";
 import {
-  Frown,
-  Smile,
-  X,
-  Sparkles,
-  Target,
   BadgeCheck,
   Briefcase,
+  Frown,
   MessageSquare,
+  Smile,
+  Sparkles,
+  Target,
+  X,
 } from "lucide-react";
 
 const otherAgencies = [
-  "Rigid work with little flexibility",
-  "Overpromise, underdeliver",
-  "Generic visuals and copy",
-  "Focus only on deliverables",
-  "Disconnected services",
-  "Outsourced work without transparency",
+  "Unclear software requirements",
+  "Confusing user flows",
+  "Interfaces that miss product needs",
+  "Inconsistent brand graphics",
+  "Disconnected design and development",
+  "Unclear project scope",
 ];
 
 const novaMatrix = [
   {
     icon: Sparkles,
-    text: "Custom-tailored for each client",
+    text: "Software development shaped around project requirements",
   },
   {
     icon: Target,
-    text: "Realistic goals, consistently delivered",
+    text: "UI/UX design for websites and applications",
   },
   {
     icon: BadgeCheck,
-    text: "Professional, conversion focused design",
+    text: "Graphic design for brands and digital channels",
   },
   {
     icon: Briefcase,
-    text: "Focused on outcomes and growth",
+    text: "User flows, interfaces, and prototypes",
   },
   {
     icon: Sparkles,
-    text: "Full-stack creative & performance team",
+    text: "Web, mobile, and digital product development",
   },
   {
     icon: MessageSquare,
-    text: "All in-house with full visibility",
+    text: "Visual design assets for digital products",
   },
 ];
 
@@ -50,14 +50,11 @@ export default function WhyChooseUs() {
   return (
     <section className="bg-[#f7fffa] px-4 py-20 md:px-8">
       <div className="mx-auto max-w-7xl">
-
         {/* Badge */}
         <div className="mb-5 flex justify-center">
           <div className="flex items-center gap-3">
             <div className="h-3 w-3 border-l-2 border-t-2 border-emerald-500" />
-            <span className="text-sm font-medium text-neutral-800">
-              Why us
-            </span>
+            <span className="text-sm font-medium text-neutral-800">Why us</span>
           </div>
         </div>
 
@@ -68,7 +65,7 @@ export default function WhyChooseUs() {
           </h2>
 
           <p className="mt-5 text-base text-neutral-500 md:text-lg">
-            Find out why NovaMatrix is better than most agencies.
+            Software, UI/UX, and graphic design for digital products.
           </p>
         </div>
 
@@ -80,13 +77,12 @@ export default function WhyChooseUs() {
           className="mt-16 rounded-[40px] bg-[#f3f8f4] p-4 md:p-8 lg:p-10"
         >
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-
             {/* Left Card */}
             <div>
               <div className="mb-6 flex items-center justify-center gap-3">
                 <Frown size={22} className="text-neutral-500" />
                 <h3 className="text-xl font-semibold text-neutral-500">
-                  Other Agencies:
+                  Common project challenges:
                 </h3>
               </div>
 
@@ -127,10 +123,7 @@ export default function WhyChooseUs() {
                       className="flex items-center gap-4 border-b border-neutral-100 py-5 last:border-none"
                     >
                       <div className="flex h-7 w-7 items-center justify-center">
-                        <Icon
-                          size={18}
-                          className="text-[#f32e25]"
-                        />
+                        <Icon size={18} className="text-[#f32e25]" />
                       </div>
 
                       <p className="text-sm font-medium text-neutral-800 md:text-base">
@@ -141,7 +134,6 @@ export default function WhyChooseUs() {
                 })}
               </div>
             </div>
-
           </div>
         </motion.div>
       </div>

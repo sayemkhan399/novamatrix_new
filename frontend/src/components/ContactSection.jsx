@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  ArrowUpRight,
-} from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 
 import {
   FaFacebookF,
@@ -22,7 +17,6 @@ export default function ContactSection() {
   return (
     <section className="bg-[#f7fffa] px-4 py-20 md:px-8">
       <div className="mx-auto max-w-7xl">
-
         {/* Heading */}
         <motion.div
           variants={fadeUp}
@@ -34,24 +28,19 @@ export default function ContactSection() {
           <div className="mb-5 flex justify-center">
             <div className="flex items-center gap-3">
               <div className="h-3 w-3 border-l-2 border-t-2 border-emerald-500" />
-              <span className="text-sm font-medium text-black">
-                Contact Us
-              </span>
+              <span className="text-sm font-medium text-black">Contact Us</span>
             </div>
           </div>
 
           <h2 className="text-3xl font-bold text-black md:text-5xl">
             Let's build something
             <br />
-            <span className="text-gray-400">
-              great together
-            </span>
+            <span className="text-gray-400">great together</span>
           </h2>
         </motion.div>
 
         {/* Layout */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-
           {/* Left Side */}
           <motion.div
             variants={fadeUp}
@@ -60,48 +49,30 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="rounded-[36px] border border-emerald-100 bg-white p-8 shadow-sm lg:col-span-5"
           >
-            <h3 className="text-2xl font-semibold text-black">
-              Get in touch
-            </h3>
+            <h3 className="text-2xl font-semibold text-black">Get in touch</h3>
 
             <p className="mt-4 text-gray-600">
-              Tell us about your project,
-              business goals, or product idea.
+              Tell us about your software, UI/UX, or graphic design project.
             </p>
 
             {/* Contact Cards */}
             <div className="mt-10 space-y-4">
-
               <div className="flex items-center gap-4 rounded-2xl  p-4">
-                <MapPin
-                  size={18}
-                  className="text-emerald-600"
-                />
-                <p className="text-sm text-gray-700">
-                  House 12, Road 5, Dhaka, Bangladesh
-                </p>
+                <MapPin size={18} className="text-emerald-600" />
+                <p className="text-sm text-gray-700">Dhaka, Bangladesh</p>
               </div>
 
               <div className="flex items-center gap-4 rounded-2xl  p-4">
-                <Phone
-                  size={18}
-                  className="text-emerald-600"
-                />
-                <p className="text-sm text-gray-700">
-                  +880 17XX XXX XXX
-                </p>
+                <Phone size={18} className="text-emerald-600" />
+                <p className="text-sm text-gray-700">+8801768639060</p>
               </div>
 
               <div className="flex items-center gap-4 rounded-2xl  p-4">
-                <Mail
-                  size={18}
-                  className="text-emerald-600"
-                />
+                <Mail size={18} className="text-emerald-600" />
                 <p className="text-sm text-gray-700">
-                  hello@novamatrix.com
+                  novamatrixtech@gmail.com
                 </p>
               </div>
-
             </div>
 
             {/* Social */}
@@ -111,22 +82,17 @@ export default function ContactSection() {
               </p>
 
               <div className="flex gap-3">
-
-                {[
-                  FaFacebookF,
-                  FaInstagram,
-                  FaLinkedinIn,
-                  FaWhatsapp,
-                ].map((Icon, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-100 bg-white text-emerald-600 transition hover:bg-emerald-600 hover:text-white"
-                  >
-                    <Icon size={16} />
-                  </a>
-                ))}
-
+                {[FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp].map(
+                  (Icon, index) => (
+                    <a
+                      key={index}
+                      href="#"
+                      className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-100 bg-white text-emerald-600 transition hover:bg-emerald-600 hover:text-white"
+                    >
+                      <Icon size={16} />
+                    </a>
+                  ),
+                )}
               </div>
             </div>
           </motion.div>
@@ -144,7 +110,6 @@ export default function ContactSection() {
             </h3>
 
             <form className="space-y-5 text-black">
-
               <input
                 type="text"
                 placeholder="Your Name"
@@ -176,7 +141,6 @@ export default function ContactSection() {
                 Send Message
                 <ArrowUpRight size={16} />
               </button>
-
             </form>
           </motion.div>
         </div>

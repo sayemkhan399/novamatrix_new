@@ -81,9 +81,8 @@ export default function LeadershipSection() {
             Our Visionaries & Leaders
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-gray-500 md:text-base">
-            From our founders to our senior advisors and directors, this team
-            drives Octopi Digital&apos;s strategy, creativity, and long-term
-            growth.
+            The NovaMatrix team works across software development, UI/UX design,
+            and graphic design.
           </p>
         </motion.div>
 

@@ -1,43 +1,43 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Plus, Minus, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Minus, Plus } from "lucide-react";
+import { useState } from "react";
 
 const faqs = [
   {
-    question: "What does “unlimited design” mean?",
+    question: "What services does NovaMatrix provide?",
     answer:
-      "You can request as many design tasks as you want during your active subscription. We work through requests one at a time, delivering high-quality designs.",
+      "NovaMatrix provides software development, UI/UX design, and graphic design for websites, apps, and digital products.",
   },
   {
-    question: "How long does it take to get my designs?",
+    question: "What software can you build?",
     answer:
-      "Most requests are delivered within 24–48 hours depending on scope and complexity.",
+      "Project scope may include websites, web applications, and mobile software. The specific requirements are discussed before work begins.",
   },
   {
-    question: "Can I request revisions?",
+    question: "What is included in UI/UX design?",
     answer:
-      "Yes. We continue revising until the design aligns with your goals.",
+      "UI/UX work can include user flows, wireframes, interface design, and prototypes, depending on the project scope.",
   },
   {
-    question: "What types of designs can you create?",
+    question: "What types of graphic design do you provide?",
     answer:
-      "UI/UX design, websites, dashboards, branding, presentations, social media assets, and more.",
+      "Graphic design can include brand visuals, campaign graphics, social media assets, and other visual materials for digital channels.",
   },
   {
-    question: "How do I submit a design request?",
+    question: "How do I start a project?",
     answer:
-      "Simply send your brief, task, or idea through our project workspace.",
+      "Contact NovaMatrix with a short description of your software or design needs to discuss the project scope.",
   },
   {
-    question: "Can I cancel anytime?",
+    question: "How are project scope and estimates decided?",
     answer:
-      "Yes, there are no long-term contracts. Cancel whenever you want.",
+      "Requirements and deliverables are discussed with you before an estimate and schedule are prepared.",
   },
   {
     question:
-      "Can multiple team members submit requests under one account?",
+      "Can software development and design be part of the same project?",
     answer:
-      "Yes, your whole team can collaborate under one workspace.",
+      "Yes. Software development, UI/UX design, and graphic design can be scoped together or discussed as separate services.",
   },
 ];
 
@@ -51,34 +51,26 @@ export default function FAQSection() {
   return (
     <section className="bg-[#f7fffa] px-4 py-20 md:px-8">
       <div className="mx-auto max-w-7xl">
-        
         {/* Sticky Layout */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-          
           {/* Left Side */}
           <div className="lg:sticky lg:top-24 lg:h-fit">
-            
             {/* Badge */}
             <div className="mb-6 flex items-center gap-3">
               <div className="h-3 w-3 border-l-2 border-t-2 border-green-500" />
-              <span className="text-sm font-medium text-black">
-                FAQs
-              </span>
+              <span className="text-sm font-medium text-black">FAQs</span>
             </div>
 
             {/* Heading */}
             <h2 className="text-3xl font-bold leading-tight text-neutral-950 md:text-5xl">
               Have questions,
               <br />
-              <span className="text-gray-400">
-                We got answers.
-              </span>
+              <span className="text-gray-400">We got answers.</span>
             </h2>
 
             {/* Description */}
             <p className="mt-8 max-w-md text-base leading-relaxed text-neutral-600">
-              Everything you need to know about our process,
-              and how we deliver results.
+              Answers about our software and design services.
             </p>
 
             {/* Support Box */}
@@ -88,8 +80,7 @@ export default function FAQSection() {
               </h3>
 
               <p className="mt-3 text-neutral-600">
-                Get in touch with our support team,
-                they are friendly!
+                Tell us what you are planning to build or design.
               </p>
 
               <button className="mt-8 flex items-center gap-3 rounded-full bg-white px-6 py-4 text-sm font-medium text-emerald-700 shadow-sm">
@@ -120,11 +111,7 @@ export default function FAQSection() {
                     </h3>
 
                     <div className="mt-1 text-emerald-600">
-                      {isOpen ? (
-                        <Minus size={22} />
-                      ) : (
-                        <Plus size={22} />
-                      )}
+                      {isOpen ? <Minus size={22} /> : <Plus size={22} />}
                     </div>
                   </button>
 

@@ -7,8 +7,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import PinnedProcess from "./PinnedProcess";
-import StackedServicesSection from "./StackedServicesSection";
 import PricingPlans from "./PricingPlans";
+import StackedServicesSection from "./StackedServicesSection";
 
 export default function Services() {
   return (
@@ -32,20 +32,19 @@ export default function Services() {
           >
             <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-emerald-200 bg-white/80 px-4 py-2 text-sm font-semibold text-emerald-800">
               <Sparkles size={16} className="text-emerald-600" />
-              Design, engineering & growth
+              Software · UI/UX · Graphic design
             </div>
 
             <h1 className="max-w-4xl text-[2.65rem] font-black leading-[1.06] text-neutral-950 sm:text-5xl lg:text-6xl xl:text-7xl">
-              Digital services
+              Software and design services
               <span className="block bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 bg-clip-text text-transparent">
-                built for what’s next.
+                for digital products.
               </span>
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-neutral-600 md:text-xl">
-              Strategy, design, and engineering in one focused team. We turn
-              ambitious ideas into digital products made to perform, adapt, and
-              grow with your business.
+              NovaMatrix develops software and designs user experiences and
+              graphics for websites, apps, and digital brands.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -75,27 +74,27 @@ export default function Services() {
             className="border-l border-emerald-200 pl-6 sm:pl-8"
           >
             <p className="mb-5 text-sm font-bold text-neutral-500">
-              One partner, every stage
+              Software and design capabilities
             </p>
             <div className="divide-y divide-emerald-100">
               {[
                 {
                   icon: Layers3,
                   number: "01",
-                  title: "Find the focus",
-                  description: "Strategy shaped around your goals.",
+                  title: "Software development",
+                  description: "Websites, web applications, and mobile apps.",
                 },
                 {
                   icon: Sparkles,
                   number: "02",
-                  title: "Make it intuitive",
-                  description: "Design that feels clear and considered.",
+                  title: "UI/UX design",
+                  description: "User flows, interfaces, and prototypes.",
                 },
                 {
                   icon: Code2,
                   number: "03",
-                  title: "Build for growth",
-                  description: "Technology ready for what comes next.",
+                  title: "Graphic design",
+                  description: "Visual assets for brands and digital channels.",
                 },
               ].map(({ icon: Icon, number, title, description }) => (
                 <div
@@ -135,11 +134,11 @@ export default function Services() {
           <p className="text-sm font-bold text-emerald-700">WHAT WE DO</p>
           <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <h2 className="max-w-2xl text-3xl font-black leading-tight text-neutral-950 sm:text-4xl md:text-5xl">
-              The right expertise for your next big move.
+              Software and design for your next digital product.
             </h2>
             <p className="max-w-xl leading-relaxed text-neutral-600 md:text-lg">
-              From a sharper digital experience to a complete technology
-              platform, explore the ways we can help move your business forward.
+              Explore our software development, UI/UX design, and graphic design
+              services.
             </p>
           </div>
         </motion.div>
@@ -148,7 +147,7 @@ export default function Services() {
 
       <PinnedProcess />
 
-      <PricingPlans/>
+      <PricingPlans />
 
       <section className="bg-[#f7fffa] px-4 pb-20 sm:px-6 md:pb-28">
         <motion.div
@@ -172,11 +171,10 @@ export default function Services() {
                 HAVE A PROJECT IN MIND?
               </p>
               <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl md:text-5xl">
-                Let’s make your next move count.
+                Let’s build or design your next product.
               </h2>
               <p className="mt-4 max-w-xl leading-relaxed text-neutral-300 md:text-lg">
-                Bring us the challenge. We’ll bring the right people and a clear
-                plan to move it forward.
+                Tell us about the software or design work you have in mind.
               </p>
             </div>
             <a

@@ -1,29 +1,28 @@
-
 import { motion } from "framer-motion";
 import {
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
   ArrowUpRight,
-  Send,
-  MessageSquare,
-  ShieldCheck,
-  Globe,
   ChevronDown,
+  Clock,
+  Globe,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Phone,
+  Send,
+  ShieldCheck,
 } from "lucide-react";
 
 const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "hello@nova.com",
+    value: "novamatrixtech@gmail.com",
     color: "primary",
   },
   {
     icon: Phone,
     title: "Call Us",
-    value: "+1 (555) 123-4567",
+    value: "+8801768639060",
     color: "secondary",
   },
   {
@@ -34,31 +33,30 @@ const contactInfo = [
   },
   {
     icon: Clock,
-    title: "Response Time",
-    value: "< 24 Hours",
+    title: "Services",
+    value: "Software, UI/UX, and graphic design",
     color: "secondary",
   },
 ];
 
-
 const reasons = [
   {
     icon: MessageSquare,
-    title: "Fast Communication",
+    title: "Software Development",
     description:
-      "Quick responses and transparent communication throughout the project.",
+      "Websites, web applications, and mobile software shaped around project requirements.",
   },
   {
     icon: ShieldCheck,
-    title: "Reliable Partnership",
+    title: "UI/UX Design",
     description:
-      "Long-term collaboration focused on growth and measurable results.",
+      "User flows, wireframes, interface design, and prototypes for digital products.",
   },
   {
     icon: Globe,
-    title: "Global Availability",
+    title: "Graphic Design",
     description:
-      "Working with clients worldwide across multiple time zones.",
+      "Brand visuals, campaign graphics, and assets for digital channels.",
   },
 ];
 
@@ -104,13 +102,13 @@ export default function Contact() {
           <h1 className="mt-8 text-4xl sm:text-5xl font-black tracking-tight text-gray-900 md:text-7xl">
             Let's Build Something
             <span className="bg-gradient-to-r from-[#f95d04] via-[#f32e25] to-[#f1093f] bg-clip-text text-transparent">
-              {" "}Amazing
+              {" "}
+              Amazing
             </span>
           </h1>
 
           <p className="mx-auto mt-8 max-w-3xl text-lg md:text-xl leading-relaxed text-gray-600">
-            Ready to start your next project? We'd love to hear about your
-            ideas and help transform them into powerful digital experiences.
+            Tell us about your software, UI/UX, or graphic design project.
           </p>
         </motion.div>
 
@@ -151,13 +149,15 @@ export default function Contact() {
                     name="service"
                     className="w-full appearance-none rounded-2xl border border-gray-200 bg-white px-5 py-4 pr-12 text-gray-700 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
                   >
-                    <option value="" disabled selected>Select a Service</option>
-                    <option value="web">Web Development</option>
-                    <option value="mobile">Mobile Applications</option>
-                    <option value="cloud">Cloud Solutions</option>
-                    <option value="security">Cyber Security</option>
-                    <option value="consulting">IT Consulting</option>
-                    <option value="support">Support & Maintenance</option>
+                    <option value="" disabled selected>
+                      Select a Service
+                    </option>
+                    <option value="web">Software Development</option>
+                    <option value="mobile">Mobile App Development</option>
+                    <option value="cloud">UI/UX Design</option>
+                    <option value="security">Graphic Design</option>
+                    <option value="consulting">Brand & Graphic Design</option>
+                    <option value="support">Software & Design Project</option>
                   </select>
                   <ChevronDown className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 </div>
@@ -168,7 +168,9 @@ export default function Contact() {
                     name="budget"
                     className="w-full appearance-none rounded-2xl border border-gray-200 bg-white px-5 py-4 pr-12 text-gray-700 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
                   >
-                    <option value="" disabled selected>Select Budget Range</option>
+                    <option value="" disabled selected>
+                      Select Budget Range
+                    </option>
                     <option value="<1k">Under $1,000</option>
                     <option value="1k-2.5k">$1,000 - $2,500</option>
                     <option value="2.5k-5k">$2,500 - $5,000</option>
@@ -281,13 +283,10 @@ export default function Contact() {
           viewport={{ once: true }}
           className="mt-28 overflow-hidden rounded-[40px] bg-gradient-to-r from-gray-950 to-gray-900 p-12 text-center text-white"
         >
-          <h2 className="text-4xl font-black md:text-5xl">
-            Ready To Start?
-          </h2>
+          <h2 className="text-4xl font-black md:text-5xl">Ready To Start?</h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-300">
-            Let’s discuss your project and create something exceptional
-            together.
+            Let’s discuss the software or design work you need.
           </p>
 
           <button className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f95d04] via-[#f32e25] to-[#f1093f] px-8 py-4 font-bold text-white shadow-lg shadow-[#f32e25]/20 transition hover:scale-105">

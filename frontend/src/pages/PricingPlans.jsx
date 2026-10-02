@@ -1,31 +1,31 @@
-import  { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  Paintbrush,
-  Code2,
-  Zap,
+  Check,
   Clock,
+  Code2,
+  Paintbrush,
   RotateCcw,
   ShieldCheck,
-  Check,
   Sparkles,
+  Zap,
 } from "lucide-react";
+import { useState } from "react";
 
 const USD_TO_BDT = 125; // Exchange rate
 
 const plansData = [
   {
     id: "web-app",
-    category: "Web Development",
-    subHeading: "Scalable solutions for modern web platforms",
+    category: "Software Development",
+    subHeading: "Custom software for web products",
     description:
-      "Full-stack web applications engineered for performance, security, and high user traffic.",
+      "Plan and build websites and web applications around your product requirements.",
     basePriceUSD: 0,
     options: [
       {
         id: "design",
-        title: "UI Design",
-        description: "UI/UX & Interactive Prototype",
+        title: "Product UI/UX",
+        description: "Web and application interface design",
         priceUSD: 1200,
         icon: Paintbrush,
         defaultChecked: true,
@@ -38,8 +38,8 @@ const plansData = [
       },
       {
         id: "development",
-        title: "Code Build",
-        description: "Full-Stack Custom Code",
+        title: "Software Build",
+        description: "Full-stack software development",
         priceUSD: 2500,
         icon: Code2,
         defaultChecked: true,
@@ -63,17 +63,23 @@ const plansData = [
       },
     ],
     commonFeatures: [
-      { icon: Clock, text: (days) => `Avg. ${Math.ceil(days / 7)} weeks turnaround` },
+      {
+        icon: Clock,
+        text: (days) => `Avg. ${Math.ceil(days / 7)} weeks turnaround`,
+      },
       { icon: RotateCcw, text: (revs) => `${revs} rounds of revisions` },
-      { icon: ShieldCheck, text: () => "3 months of free support" },
+      {
+        icon: ShieldCheck,
+        text: () => "Software support scope agreed for the project",
+      },
     ],
   },
   {
     id: "mobile-app",
-    category: "Mobile Apps",
-    subHeading: "Native & Cross-Platform Mobile Apps",
+    category: "Mobile App Development",
+    subHeading: "Software for iOS and Android",
     description:
-      "Intuitive iOS and Android apps crafted to scale your business directly to handheld devices.",
+      "Design and develop mobile applications around your product requirements.",
     basePriceUSD: 0,
     options: [
       {
@@ -117,17 +123,23 @@ const plansData = [
       },
     ],
     commonFeatures: [
-      { icon: Clock, text: (days) => `Avg. ${Math.ceil(days / 7)} weeks turnaround` },
+      {
+        icon: Clock,
+        text: (days) => `Avg. ${Math.ceil(days / 7)} weeks turnaround`,
+      },
       { icon: RotateCcw, text: (revs) => `${revs} rounds of revisions` },
-      { icon: ShieldCheck, text: () => "3 months of free support & store approval guarantee" },
+      {
+        icon: ShieldCheck,
+        text: () => "Mobile app handoff and support scope agreed per project",
+      },
     ],
   },
   {
     id: "ui-ux",
-    category: "Product Design",
-    subHeading: "Product strategy and visual identity",
+    category: "UI/UX Design",
+    subHeading: "User experience and interface design",
     description:
-      "Transform raw ideas into user-centric interfaces backed by deep UX research and design systems.",
+      "Shape digital products with user flows, wireframes, interface design, and prototypes.",
     basePriceUSD: 0,
     options: [
       {
@@ -138,8 +150,8 @@ const plansData = [
         icon: Paintbrush,
         defaultChecked: true,
         features: [
-          "Competitor analysis & user journeys",
-          "Low-fidelity wireframes & site map",
+          "User journeys and product flows",
+          "Wireframes and information structure",
         ],
         timeDays: 7,
         revisions: 3,
@@ -173,41 +185,44 @@ const plansData = [
     commonFeatures: [
       { icon: Clock, text: (days) => `Avg. ${days} days turnaround` },
       { icon: RotateCcw, text: (revs) => `${revs} rounds of revisions` },
-      { icon: ShieldCheck, text: () => "Developer handoff support included" },
+      {
+        icon: ShieldCheck,
+        text: () => "Design handoff prepared for development",
+      },
     ],
   },
   {
     id: "ai-solutions",
-    category: "AI Automation",
-    subHeading: "Intelligent automation and AI integration",
+    category: "Graphic Design",
+    subHeading: "Visual design for digital brands",
     description:
-      "Supercharge your operations with custom AI chatbots, LLM integrations, and predictive analytics.",
+      "Create graphic assets for brands, campaigns, and digital channels.",
     basePriceUSD: 0,
     options: [
       {
         id: "architecture",
-        title: "AI Strategy",
-        description: "Model selection & Architecture",
+        title: "Visual Direction",
+        description: "Graphic design planning",
         priceUSD: 1800,
         icon: Paintbrush,
         defaultChecked: true,
         features: [
-          "AI use-case discovery & tech stack plan",
-          "Data preprocessing & fine-tuning strategy",
+          "Visual direction and asset requirements",
+          "Graphic style and design references",
         ],
         timeDays: 10,
         revisions: 3,
       },
       {
         id: "development",
-        title: "Agent Build",
-        description: "Custom Agents & API Build",
+        title: "Graphic Design Assets",
+        description: "Digital graphics and campaign assets",
         priceUSD: 3200,
         icon: Code2,
         defaultChecked: true,
         features: [
-          "LLM/OpenAI/Custom Model integration",
-          "Automated workflows & secure vector storage",
+          "Brand and campaign graphics",
+          "Social media and digital assets",
         ],
         timeDays: 20,
         revisions: 5,
@@ -219,49 +234,55 @@ const plansData = [
         priceUSD: 1000,
         icon: Zap,
         defaultChecked: false,
-        features: ["Accelerated AI model training/deployment"],
+        features: ["Priority graphic design turnaround"],
         timeDays: -10,
         revisions: 0,
       },
     ],
     commonFeatures: [
-      { icon: Clock, text: (days) => `Avg. ${Math.ceil(days / 7)} weeks turnaround` },
+      {
+        icon: Clock,
+        text: (days) => `Avg. ${Math.ceil(days / 7)} weeks turnaround`,
+      },
       { icon: RotateCcw, text: (revs) => `${revs} rounds of revisions` },
-      { icon: ShieldCheck, text: () => "6 months of model maintenance & API monitoring" },
+      {
+        icon: ShieldCheck,
+        text: () => "Graphic asset preparation and handoff",
+      },
     ],
   },
   {
     id: "it-consulting",
-    category: "IT Consulting",
-    subHeading: "Expert guidance for digital transformation",
+    category: "Brand & Graphic Design",
+    subHeading: "Visual identity and graphic assets",
     description:
-      "Modernize legacy architecture, plan cloud migrations, and optimize technology budgets.",
+      "Create consistent visual materials for brands, campaigns, and digital products.",
     basePriceUSD: 0,
     options: [
       {
         id: "roadmap",
-        title: "Tech Strategy",
-        description: "Strategy & Assessment",
+        title: "Brand Direction",
+        description: "Visual identity planning",
         priceUSD: 1000,
         icon: Paintbrush,
         defaultChecked: true,
         features: [
-          "Current tech stack evaluation & cost optimization",
-          "Digital transformation roadmap document",
+          "Visual direction and brand asset requirements",
+          "Graphic design guidelines for digital channels",
         ],
         timeDays: 5,
         revisions: 2,
       },
       {
         id: "advisory",
-        title: "CTO Advisory",
-        description: "Implementation Strategy",
+        title: "Design Assets",
+        description: "Campaign and digital graphics",
         priceUSD: 2000,
         icon: Code2,
         defaultChecked: true,
         features: [
-          "Cloud architecture design (AWS/GCP/Azure)",
-          "DevOps strategy & CI/CD pipeline setup guide",
+          "Campaign and social media graphics",
+          "Digital design assets prepared for handoff",
         ],
         timeDays: 10,
         revisions: 3,
@@ -273,7 +294,7 @@ const plansData = [
         priceUSD: 500,
         icon: Zap,
         defaultChecked: false,
-        features: ["Priority strategy sessions & rapid blueprint"],
+        features: ["Priority graphic design turnaround"],
         timeDays: -3,
         revisions: 0,
       },
@@ -281,13 +302,16 @@ const plansData = [
     commonFeatures: [
       { icon: Clock, text: (days) => `Avg. ${days} days turnaround` },
       { icon: RotateCcw, text: (revs) => `${revs} rounds of review` },
-      { icon: ShieldCheck, text: () => "1-on-1 executive consulting included" },
+      {
+        icon: ShieldCheck,
+        text: () => "Graphic asset preparation and handoff",
+      },
     ],
   },
 ];
 
 export default function PricingPlans3D() {
-  const [currency, setCurrency] = useState("USD"); 
+  const [currency, setCurrency] = useState("USD");
 
   return (
     <section className="relative min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-50/40 via-slate-50 to-slate-100 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -299,22 +323,27 @@ export default function PricingPlans3D() {
       <div className="relative z-10 mx-auto max-w-4xl text-center mb-16">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-4 py-1.5 text-xs font-bold text-amber-700 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-amber-200/60 backdrop-blur-md">
           <Sparkles size={14} className="text-amber-500" />
-          Pricing
+          Software & Design
         </span>
         <h1 className="mt-5 text-4xl font-black tracking-tight text-slate-900 sm:text-6xl">
-          Pricing Plans
+          Software & Design Plans
         </h1>
         <p className="mt-4 text-base sm:text-lg font-medium text-slate-600 max-w-xl mx-auto">
-          For each plan we outperform the competition in quality, speed, and overall service.
+          Explore software development, UI/UX design, and graphic design options
+          for your project.
         </p>
 
         {/* Currency Switch Toggle (USD / BDT) */}
         <div className="mt-8 flex justify-center items-center gap-3 ">
-          <span className={`text-sm font-bold transition-colors ${currency === "USD" ? "text-slate-900" : "text-slate-400"}`}>
+          <span
+            className={`text-sm font-bold transition-colors ${currency === "USD" ? "text-slate-900" : "text-slate-400"}`}
+          >
             USD ($)
           </span>
           <button
-            onClick={() => setCurrency((prev) => (prev === "USD" ? "BDT" : "USD"))}
+            onClick={() =>
+              setCurrency((prev) => (prev === "USD" ? "BDT" : "USD"))
+            }
             className="relative h-9 w-18 rounded-full bg-slate-900/90 p-1 shadow-[inset_0_2px_4px_rgba(0,0,0,0.4),_0_4px_12px_rgba(0,0,0,0.1)] transition-colors focus:outline-none cursor-pointer"
             aria-label="Toggle currency"
           >
@@ -328,7 +357,9 @@ export default function PricingPlans3D() {
               {currency}
             </motion.div>
           </button>
-          <span className={`text-sm font-bold transition-colors ${currency === "BDT" ? "text-slate-900" : "text-slate-400"}`}>
+          <span
+            className={`text-sm font-bold transition-colors ${currency === "BDT" ? "text-slate-900" : "text-slate-400"}`}
+          >
             BDT (৳)
           </span>
         </div>
@@ -386,7 +417,7 @@ function PricingCard3D({ plan, currency }) {
     1,
     plan.options.reduce((days, opt) => {
       return selectedOptions[opt.id] ? days + opt.timeDays : days;
-    }, 0)
+    }, 0),
   );
 
   const totalRevisions = plan.options.reduce((revs, opt) => {
@@ -396,7 +427,6 @@ function PricingCard3D({ plan, currency }) {
   return (
     <div className="relative rounded-[40px] bg-white/90 backdrop-blur-xl p-6 sm:p-10 border border-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.06),_0_1px_2px_rgba(0,0,0,0.04),_inset_0_1px_1px_rgba(255,255,255,1)]">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-        
         {/* Left Column: Title & Interactive Switches */}
         <div className="lg:col-span-6 space-y-6">
           <div>
@@ -457,7 +487,11 @@ function PricingCard3D({ plan, currency }) {
                   >
                     <motion.span
                       layout
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      }}
                       className={`pointer-events-none inline-block h-6 w-6 rounded-full bg-white shadow-[0_3px_8px_rgba(0,0,0,0.25),_inset_0_-1px_1px_rgba(0,0,0,0.1)] ${
                         isChecked ? "translate-x-6" : "translate-x-0"
                       }`}
@@ -536,17 +570,28 @@ function PricingCard3D({ plan, currency }) {
                     >
                       {/* Common Plan Feature Specs */}
                       <div className="flex items-center gap-2.5 text-slate-600">
-                        <Clock size={16} className="text-amber-600/80 shrink-0" />
+                        <Clock
+                          size={16}
+                          className="text-amber-600/80 shrink-0"
+                        />
                         <span>{plan.commonFeatures[0].text(totalDays)}</span>
                       </div>
 
                       <div className="flex items-center gap-2.5 text-slate-600">
-                        <RotateCcw size={16} className="text-amber-600/80 shrink-0" />
-                        <span>{plan.commonFeatures[1].text(totalRevisions)}</span>
+                        <RotateCcw
+                          size={16}
+                          className="text-amber-600/80 shrink-0"
+                        />
+                        <span>
+                          {plan.commonFeatures[1].text(totalRevisions)}
+                        </span>
                       </div>
 
                       <div className="flex items-center gap-2.5 text-slate-600">
-                        <ShieldCheck size={16} className="text-amber-600/80 shrink-0" />
+                        <ShieldCheck
+                          size={16}
+                          className="text-amber-600/80 shrink-0"
+                        />
                         <span>{plan.commonFeatures[2].text()}</span>
                       </div>
 
@@ -554,14 +599,20 @@ function PricingCard3D({ plan, currency }) {
                       {selectedOptions.fast && (
                         <div className="flex items-center gap-2.5 text-slate-800 font-semibold">
                           <Zap size={16} className="text-amber-600 shrink-0" />
-                          <span>Fast delivery (3X everything)</span>
+                          <span>Priority service option selected</span>
                         </div>
                       )}
 
                       {/* Dynamic Option Features */}
                       {activeFeatures.map((feat) => (
-                        <div key={feat} className="flex items-start gap-2.5 text-slate-600">
-                          <Check size={16} className="text-amber-600/80 shrink-0 mt-0.5" />
+                        <div
+                          key={feat}
+                          className="flex items-start gap-2.5 text-slate-600"
+                        >
+                          <Check
+                            size={16}
+                            className="text-amber-600/80 shrink-0 mt-0.5"
+                          />
                           <span>{feat}</span>
                         </div>
                       ))}
@@ -579,16 +630,17 @@ function PricingCard3D({ plan, currency }) {
                 className="w-full relative group overflow-hidden rounded-2xl bg-gradient-to-b from-slate-800 to-slate-950 py-4 px-6 text-sm font-bold text-white shadow-[0_12px_28px_rgba(0,0,0,0.25),_inset_0_1px_1px_rgba(255,255,255,0.2)] transition-all cursor-pointer"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
-                  <span>Book a 45-min call</span>
-                  <Sparkles size={16} className="text-amber-400 group-hover:rotate-12 transition-transform" />
+                  <span>Discuss your software or design project</span>
+                  <Sparkles
+                    size={16}
+                    className="text-amber-400 group-hover:rotate-12 transition-transform"
+                  />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-500/0 via-amber-500/20 to-amber-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.button>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   );
