@@ -46,7 +46,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${
         isSticky
-          ? "bg-white/80 backdrop-blur-xl border-b shadow-sm"
+          ? "bg-white/80 backdrop-blur-xl  shadow-sm"
           : "bg-transparent"
       }`}
     >

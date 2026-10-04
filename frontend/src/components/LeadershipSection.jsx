@@ -12,7 +12,7 @@ const leaders = [
       "Leading product strategy, modern UI systems, and scalable digital experiences for ambitious brands.",
     image:
       "https://i.ibb.co.com/hJ8mfyN2/Whats-App-Image-2025-05-01-at-22-48-42.jpg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/md-sayem-khan-ab0a09286",
     email: "mailto:example@domain.com",
   },
   {
@@ -22,7 +22,7 @@ const leaders = [
       "Focused on innovation, business growth, and building high-performing digital solutions worldwide.",
     image:
       "https://i.ibb.co.com/C5d0GXzT/Whats-App-Image-2025-12-14-at-22-24-32.jpg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/shahriarshishir",
     email: "mailto:example@domain.com",
   },
   {
@@ -32,7 +32,7 @@ const leaders = [
       "Specialized in scalable architecture, cloud systems, and premium web application development.",
     image:
       "https://i.ibb.co.com/G3pWRpzG/Whats-App-Image-2025-12-14-at-22-24-16.jpg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/mahdin-islam-mukim/",
     email: "mailto:example@domain.com",
   },
 ];
@@ -126,6 +126,8 @@ export default function LeadershipSection() {
                   <a
                     href={leader.linkedin}
                     aria-label="LinkedIn"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/70 text-gray-800 shadow-md transition-all hover:bg-sky-50 hover:text-sky-600 hover:scale-110"
                   >
                     <FaLinkedinIn size={18} />

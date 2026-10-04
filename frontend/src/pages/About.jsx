@@ -11,8 +11,10 @@ import {
   Play,
   ShieldCheck,
   Sparkles,
+  X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import LeadershipSection from "../components/LeadershipSection";
 
 function AnimatedStat({ number, label }) {
@@ -147,7 +149,33 @@ const fadeUp = {
   },
 };
 
+const servicesVideoEmbedUrl =
+  "https://www.youtube.com/embed/qdDXo8hVe1c?autoplay=1&rel=0";
+
 export default function AboutSection() {
+  const [videoOpen, setVideoOpen] = useState(false);
+  const closeButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (!videoOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setVideoOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeOnEscape);
+    closeButtonRef.current?.focus();
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeOnEscape);
+      previousFocus?.focus();
+    };
+  }, [videoOpen]);
+
   return (
     <section className="relative overflow-hidden bg-[#f7fffa] py-24 md:py-32">
       {/* Background */}
@@ -217,12 +245,62 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <button className="flex items-center gap-3 rounded-full border border-neutral-300 bg-white px-8 py-4 text-sm font-semibold text-black transition hover:bg-neutral-100">
+            <button
+              type="button"
+              onClick={() => setVideoOpen(true)}
+              className="flex items-center gap-3 rounded-full border border-neutral-300 bg-white px-8 py-4 text-sm font-semibold text-black transition hover:bg-neutral-100"
+            >
               <Play size={16} />
               Explore Our Services
             </button>
           </motion.div>
         </div>
+
+        {videoOpen &&
+          createPortal(
+            <div
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-950/65 p-4 backdrop-blur-sm"
+              onClick={(event) => {
+                if (event.target === event.currentTarget) setVideoOpen(false);
+              }}
+            >
+              <div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="services-video-title"
+                className="w-full max-w-5xl overflow-hidden rounded-3xl border border-emerald-100 bg-white shadow-[0_24px_80px_rgba(0,0,0,0.25)]"
+              >
+                <div className="flex items-center justify-between gap-4 border-b border-emerald-100 bg-[#f7fffa] px-5 py-4">
+                  <h2
+                    id="services-video-title"
+                    className="text-lg font-semibold text-neutral-950"
+                  >
+                    Explore Our Services
+                  </h2>
+                  <button
+                    ref={closeButtonRef}
+                    type="button"
+                    onClick={() => setVideoOpen(false)}
+                    aria-label="Close video"
+                    className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-neutral-600 transition hover:bg-emerald-100 hover:text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+                <div className="aspect-[16/9] w-full bg-neutral-950">
+                  <iframe
+                    className="block h-full w-full"
+                    src={servicesVideoEmbedUrl}
+                    title="NovaMatrix services video"
+                    allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            </div>,
+            document.body,
+          )}
 
         {/* Stats */}
         <motion.div

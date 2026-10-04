@@ -1,5 +1,7 @@
 
 
+import { useEffect, useRef, useState } from "react";
+
 const steps = [
   {
     number: "01",
@@ -170,9 +172,78 @@ function PaperCard({ step }) {
   );
 }
 
+function ScrollRevealCard({ step }) {
+  const cardRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(
+    () =>
+      typeof window === "undefined" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !("IntersectionObserver" in window),
+  );
+
+  useEffect(() => {
+    if (isVisible) return;
+
+    const card = cardRef.current;
+    if (!card) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        setIsVisible(true);
+        observer.disconnect();
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  return (
+    <div
+      ref={cardRef}
+      className={`
+        pinned-process-card
+        flex
+        ${
+          step.position === "right"
+            ? "justify-end sm:pr-8 md:pr-12"
+            : "justify-start sm:pl-8 md:pl-12"
+        }
+      `}
+      style={{
+        animation: isVisible
+          ? "pinned-process-hang 900ms cubic-bezier(0.2, 0.75, 0.35, 1) both"
+          : "none",
+        opacity: isVisible ? undefined : 0,
+      }}
+    >
+      <PaperCard step={step} />
+    </div>
+  );
+}
+
 export default function PinnedProcess() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-white px-4 sm:px-6 py-16 sm:py-24">
+      <style>
+        {`
+          @keyframes pinned-process-hang {
+            0% { opacity: 0; transform: translateY(-36px) rotate(-9deg); }
+            45% { opacity: 1; transform: translateY(8px) rotate(4deg); }
+            65% { transform: translateY(-4px) rotate(-2deg); }
+            82% { transform: translateY(2px) rotate(1deg); }
+            100% { opacity: 1; transform: translateY(0) rotate(0); }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .pinned-process-card { animation: none !important; }
+          }
+        `}
+      </style>
+
       {/* 4-Side Blurry Type Background Over Pure White */}
       <div className="pointer-events-none absolute inset-0 z-0">
         {/* Soft Ambient Radial Glows */}
@@ -256,19 +327,7 @@ export default function PinnedProcess() {
           {/* 5 Step Cards */}
           <div className="relative z-10 space-y-12 sm:space-y-20 md:space-y-28">
             {steps.map((step) => (
-              <div
-                key={step.number}
-                className={`
-                  flex
-                  ${
-                    step.position === "right"
-                      ? "justify-end sm:pr-8 md:pr-12"
-                      : "justify-start sm:pl-8 md:pl-12"
-                  }
-                `}
-              >
-                <PaperCard step={step} />
-              </div>
+              <ScrollRevealCard key={step.number} step={step} />
             ))}
 
             {/* Bottom Callout Text after Step 05 */}
