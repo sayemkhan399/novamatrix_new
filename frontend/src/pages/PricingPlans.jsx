@@ -314,7 +314,7 @@ export default function PricingPlans3D() {
   const [currency, setCurrency] = useState("USD");
 
   return (
-    <section className="relative min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-50/40 via-slate-50 to-slate-100 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative min-h-screen bg-white py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background Soft Glow Orbs */}
       <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-amber-200/30 blur-3xl" />
       <div className="pointer-events-none absolute top-1/2 -right-40 h-96 w-96 rounded-full bg-orange-200/20 blur-3xl" />
