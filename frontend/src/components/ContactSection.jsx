@@ -15,7 +15,7 @@ const fadeUp = {
 
 export default function ContactSection() {
   return (
-    <section className="bg-[#f7fffa] px-4 py-20 md:px-8">
+    <section id="contact" className="bg-[#f7fffa] px-4 py-20 md:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Heading */}
         <motion.div
@@ -64,14 +64,19 @@ export default function ContactSection() {
 
               <div className="flex items-center gap-4 rounded-2xl  p-4">
                 <Phone size={18} className="text-emerald-600" />
-                <p className="text-sm text-gray-700">+8801768639060</p>
+                <a className="text-sm text-gray-700" href="tel:+8801768639060">
+                  +8801768639060
+                </a>
               </div>
 
               <div className="flex items-center gap-4 rounded-2xl  p-4">
                 <Mail size={18} className="text-emerald-600" />
-                <p className="text-sm text-gray-700">
+                <a
+                  className="text-sm text-gray-700"
+                  href="mailto:novamatrixtech@gmail.com"
+                >
                   novamatrixtech@gmail.com
-                </p>
+                </a>
               </div>
             </div>
 
@@ -110,28 +115,50 @@ export default function ContactSection() {
             </h3>
 
             <form className="space-y-5 text-black">
+              <label className="sr-only" htmlFor="contact-name">
+                Your name
+              </label>
               <input
+                id="contact-name"
+                name="name"
                 type="text"
                 placeholder="Your Name"
-                className="w-full rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-emerald-500"
+                autoComplete="name"
+                className="w-full rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
               />
 
+              <label className="sr-only" htmlFor="contact-email">
+                Email address
+              </label>
               <input
+                id="contact-email"
+                name="email"
                 type="email"
                 placeholder="Email Address"
-                className="w-full rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-emerald-500"
+                autoComplete="email"
+                className="w-full rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
               />
 
+              <label className="sr-only" htmlFor="contact-project-type">
+                Project type
+              </label>
               <input
+                id="contact-project-type"
+                name="projectType"
                 type="text"
                 placeholder="Project Type"
-                className="w-full rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
               />
 
+              <label className="sr-only" htmlFor="contact-message">
+                Tell us about your project
+              </label>
               <textarea
+                id="contact-message"
+                name="message"
                 rows={5}
                 placeholder="Tell us about your project..."
-                className="w-full resize-none rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full resize-none rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
               />
 
               <button

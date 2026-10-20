@@ -71,7 +71,7 @@ const fadeUp = {
 
 export default function Contact() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 md:py-32">
+    <section id="contact" className="relative overflow-hidden bg-white py-16 md:py-32">
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-[#f32e25]/10 blur-3xl" />
@@ -129,14 +129,26 @@ export default function Contact() {
             <form className="mt-8 space-y-5">
               {/* Row 1: Name & Email */}
               <div className="grid gap-5 md:grid-cols-2">
+                <label className="sr-only" htmlFor="contact-page-name">
+                  Your name
+                </label>
                 <input
+                  id="contact-page-name"
+                  name="name"
                   type="text"
                   placeholder="Your Name"
+                  autoComplete="name"
                   className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-4 text-gray-700 placeholder-gray-400 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
                 />
+                <label className="sr-only" htmlFor="contact-page-email">
+                  Email address
+                </label>
                 <input
+                  id="contact-page-email"
+                  name="email"
                   type="email"
                   placeholder="Email Address"
+                  autoComplete="email"
                   className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-4 text-gray-700 placeholder-gray-400 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
                 />
               </div>
@@ -145,11 +157,16 @@ export default function Contact() {
               <div className="grid gap-5 md:grid-cols-2">
                 {/* Service Select */}
                 <div className="relative">
+                  <label className="sr-only" htmlFor="contact-page-service">
+                    Select a service
+                  </label>
                   <select
+                    id="contact-page-service"
                     name="service"
+                    defaultValue=""
                     className="w-full appearance-none rounded-2xl border border-gray-200 bg-white px-5 py-4 pr-12 text-gray-700 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
                   >
-                    <option value="" disabled selected>
+                    <option value="" disabled>
                       Select a Service
                     </option>
                     <option value="web">Software Development</option>
@@ -164,11 +181,16 @@ export default function Contact() {
 
                 {/* Budget Select */}
                 <div className="relative">
+                  <label className="sr-only" htmlFor="contact-page-budget">
+                    Select a budget range
+                  </label>
                   <select
+                    id="contact-page-budget"
                     name="budget"
+                    defaultValue=""
                     className="w-full appearance-none rounded-2xl border border-gray-200 bg-white px-5 py-4 pr-12 text-gray-700 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
                   >
-                    <option value="" disabled selected>
+                    <option value="" disabled>
                       Select Budget Range
                     </option>
                     <option value="<1k">Under $1,000</option>
@@ -183,14 +205,24 @@ export default function Contact() {
               </div>
 
               {/* Row 3: Subject */}
+              <label className="sr-only" htmlFor="contact-page-subject">
+                Subject
+              </label>
               <input
+                id="contact-page-subject"
+                name="subject"
                 type="text"
                 placeholder="Subject"
                 className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-4 text-gray-700 placeholder-gray-400 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
               />
 
               {/* Row 4: Message */}
+              <label className="sr-only" htmlFor="contact-page-message">
+                Tell us about your project
+              </label>
               <textarea
+                id="contact-page-message"
+                name="message"
                 rows={6}
                 placeholder="Tell us about your project..."
                 className="w-full resize-none rounded-2xl border border-gray-200 bg-white px-5 py-4 text-gray-700 placeholder-gray-400 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
@@ -237,7 +269,20 @@ export default function Contact() {
                     {item.title}
                   </h3>
 
-                  <p className="mt-2 text-gray-600">{item.value}</p>
+                  {item.title === "Email Us" ? (
+                    <a
+                      className="mt-2 block text-gray-600"
+                      href="mailto:novamatrixtech@gmail.com"
+                    >
+                      {item.value}
+                    </a>
+                  ) : item.title === "Call Us" ? (
+                    <a className="mt-2 block text-gray-600" href="tel:+8801768639060">
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="mt-2 text-gray-600">{item.value}</p>
+                  )}
                 </motion.div>
               );
             })}

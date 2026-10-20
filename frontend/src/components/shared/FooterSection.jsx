@@ -1,20 +1,30 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
-
 import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaWhatsapp,
-} from "react-icons/fa";
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Camera,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Users,
+} from "lucide-react";
 
 import logo from "../../assets/Nova.svg";
+
+const socialLinks = [
+  { icon: Users, name: "Facebook" },
+  { icon: Camera, name: "Instagram" },
+  { icon: BriefcaseBusiness, name: "LinkedIn" },
+  { icon: MessageCircle, name: "WhatsApp" },
+];
+
 const link = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/About" },
-  { name: "Services", href: "/Services" },
-  { name: "Portfolio", href: "/Portfolio" },
-  { name: "Contact", href: "/Contact" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function FooterSection() {
@@ -22,7 +32,7 @@ export default function FooterSection() {
     <footer className="relative min-h-screen overflow-hidden bg-[#f7fffa] px-4 py-8 md:px-8">
       {/* Background Logo */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.04]">
-        <img src={logo} alt="Nova" className="w-[70%] max-w-[900px]" />
+        <img src={logo} alt="" width={1920} height={1080} className="w-[70%] max-w-[900px]" />
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-between">
@@ -34,7 +44,7 @@ export default function FooterSection() {
             whileInView={{ opacity: 1, y: 0 }}
             className="lg:col-span-7"
           >
-            <img src={logo} alt="NovaMatrix" className="mb-8 h-14 w-auto" />
+            <img src={logo} alt="NovaMatrix" width={1920} height={1080} className="mb-8 h-14 w-auto" />
 
             <h2 className="text-4xl font-bold leading-tight text-black md:text-6xl xl:text-7xl">
               Software & design
@@ -64,10 +74,10 @@ export default function FooterSection() {
               Tell us what you are planning to build or design.
             </p>
 
-            <button className="mt-8 flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-4 text-sm font-medium text-white">
+            <a href="/contact#contact" className="mt-8 flex w-fit items-center gap-2 rounded-full bg-emerald-600 px-6 py-4 text-sm font-medium text-white">
               Book a Call
-              <ArrowUpRight size={16} />
-            </button>
+              <ArrowUpRight aria-hidden="true" size={16} />
+            </a>
           </motion.div>
         </div>
 
@@ -77,12 +87,12 @@ export default function FooterSection() {
           <div className="space-y-4 text-gray-600">
             <div className="flex items-center gap-3">
               <Mail size={16} />
-              novamatrixtech@gmail.com
+              <a href="mailto:novamatrixtech@gmail.com">novamatrixtech@gmail.com</a>
             </div>
 
             <div className="flex items-center gap-3">
               <Phone size={16} />
-              +8801768639060
+              <a href="tel:+8801768639060">+8801768639060</a>
             </div>
 
             <div className="flex items-center gap-3">
@@ -106,17 +116,16 @@ export default function FooterSection() {
 
           {/* Social */}
           <div className="flex gap-3 md:justify-end">
-            {[FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp].map(
-              (Icon, index) => (
+            {socialLinks.map(({ icon: Icon, name }) => (
                 <a
-                  key={index}
+                  key={name}
                   href="#"
+                  aria-label={`NovaMatrix on ${name}`}
                   className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-emerald-600 shadow-sm transition hover:bg-emerald-600 hover:text-white"
                 >
                   <Icon size={15} />
                 </a>
-              ),
-            )}
+              ))}
           </div>
         </div>
         <p className="text-sm text-gray-500">

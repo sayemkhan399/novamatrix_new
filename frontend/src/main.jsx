@@ -1,14 +1,14 @@
-import { StrictMode } from "react";
+import { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import About from "../src/pages/About.jsx";
 import App from "./App.jsx";
-import Contact from "./components/Contact.jsx";
-import Home from "./components/home/Home.jsx";
 import "./index.css";
-import Portfolio from "./pages/Portfolio.jsx";
-import Services from "./pages/Services";
+
+const loadPage = (importPage) => {
+  const Page = lazy(importPage);
+  return <Page />;
+};
 
 const router = createBrowserRouter([
   {
@@ -17,23 +17,27 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: loadPage(() => import("./components/home/Home.jsx")),
       },
       {
         path: "/about",
-        element: <About />,
+        element: loadPage(() => import("./pages/About.jsx")),
       },
       {
-        path: "/Services",
-        element: <Services />,
+        path: "/services",
+        element: loadPage(() => import("./pages/Services.jsx")),
       },
       {
         path: "/portfolio",
-        element: <Portfolio />,
+        element: loadPage(() => import("./pages/Portfolio.jsx")),
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: loadPage(() => import("./components/Contact.jsx")),
+      },
+      {
+        path: "/pricing",
+        element: loadPage(() => import("./pages/PricingPlans.jsx")),
       },
     ],
   },
@@ -41,6 +45,18 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Suspense
+      fallback={
+        <main
+          className="flex min-h-screen items-center justify-center"
+          role="status"
+          aria-label="Loading page"
+        >
+          Loading NovaMatrix...
+        </main>
+      }
+    >
+      <RouterProvider router={router} />
+    </Suspense>
   </StrictMode>,
 );

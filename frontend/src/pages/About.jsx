@@ -13,9 +13,44 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import LeadershipSection from "../components/LeadershipSection";
+
+const GlobalReachGlobe = lazy(() => import("./Globe"));
+
+function DeferredGlobalReachGlobe() {
+  const sectionRef = useRef(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const canLoad = shouldLoad || typeof IntersectionObserver === "undefined";
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || canLoad) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldLoad(true);
+        observer.disconnect();
+      },
+      { rootMargin: "200px" },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [canLoad]);
+
+  return (
+    <div ref={sectionRef} className="min-h-[920px] sm:min-h-[1020px]">
+      {canLoad && (
+        <Suspense fallback={<div className="min-h-[920px] sm:min-h-[1020px]" />}>
+          <GlobalReachGlobe />
+        </Suspense>
+      )}
+    </div>
+  );
+}
 
 function AnimatedStat({ number, label }) {
   const target = Number(number.replace(/[^0-9]/g, ""));
@@ -72,14 +107,14 @@ function AnimatedStat({ number, label }) {
 
   return (
     <>
-      <h3
+      <p
         ref={statRef}
         aria-label={`${number} ${label}`}
         className="text-4xl font-black bg-gradient-to-r from-[#f95d04] to-[#f1093f] bg-clip-text text-transparent md:text-5xl"
       >
         {count}
         {suffix}
-      </h3>
+      </p>
       <p className="mt-3 text-sm font-medium text-neutral-500 md:text-base">
         {label}
       </p>
@@ -212,11 +247,7 @@ export default function AboutSection() {
 
         {/* HERO */}
         <div className="mx-auto max-w-6xl text-center">
-          <motion.h1
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
+          <h1
             className="text-4xl font-black leading-[1.05] tracking-tight text-neutral-950 sm:text-6xl lg:text-7xl"
           >
             Software, UI/UX and graphic design for digital products and
@@ -224,7 +255,7 @@ export default function AboutSection() {
               {" "}
               businesses.
             </span>
-          </motion.h1>
+          </h1>
 
           <motion.p
             variants={fadeUp}
@@ -440,7 +471,7 @@ export default function AboutSection() {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-white">{item}</h4>
+                    <h3 className="font-semibold text-white">{item}</h3>
                     <p className="mt-1 text-sm text-neutral-400">
                       Software and design work shaped around project
                       requirements.
@@ -503,6 +534,7 @@ export default function AboutSection() {
         </div>
 
         <LeadershipSection />
+        <DeferredGlobalReachGlobe />
 
         {/* FINAL CTA */}
         <motion.div
@@ -524,15 +556,21 @@ export default function AboutSection() {
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <button className="flex items-center gap-3 rounded-full bg-black px-8 py-4 text-sm font-semibold text-white transition hover:scale-105">
+              <a
+                href="/contact#contact"
+                className="flex items-center gap-3 rounded-full bg-black px-8 py-4 text-sm font-semibold text-white transition hover:scale-105"
+              >
                 Start Your Project
-                <ArrowUpRight size={18} />
-              </button>
+                <ArrowUpRight aria-hidden="true" size={18} />
+              </a>
 
-              <button className="flex items-center gap-3 rounded-full border border-neutral-300 bg-white px-8 py-4 text-sm font-semibold text-black transition hover:bg-neutral-100">
-                <CheckCircle2 size={18} />
+              <a
+                href="tel:+8801768639060"
+                className="flex items-center gap-3 rounded-full border border-neutral-300 bg-white px-8 py-4 text-sm font-semibold text-black transition hover:bg-neutral-100"
+              >
+                <CheckCircle2 aria-hidden="true" size={18} />
                 Schedule a Call
-              </button>
+              </a>
             </div>
           </div>
         </motion.div>

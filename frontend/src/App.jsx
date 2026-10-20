@@ -1,7 +1,7 @@
 import Lenis from "lenis";
+import { MotionConfig } from "framer-motion";
 import { useEffect } from "react";
 import { Outlet } from "react-router";
-import "./App.css";
 import BottomFixedBlurryLayout from "./components/BottomFixedBlurryLayout";
 
 import FooterSection from "./components/shared/FooterSection";
@@ -35,13 +35,15 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-      <Header />
-      <WhatsAppButton />
-      <BottomFixedBlurryLayout />
-      <Outlet />
-      <FooterSection />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <Header />
+        <WhatsAppButton />
+        <BottomFixedBlurryLayout />
+        <Outlet />
+        <FooterSection />
+      </div>
+    </MotionConfig>
   );
 }
 

@@ -39,10 +39,13 @@ export default function HeroSection() {
           </span>
 
           {/* CTA */}
-          <button className="flex items-center gap-1 text-sm font-semibold text-emerald-700 transition hover:text-emerald-600">
-            <a href="/Services">See our services</a>
+          <a
+            href="/services"
+            className="flex items-center gap-1 text-sm font-semibold text-emerald-700 transition hover:text-emerald-600"
+          >
+            See our services
             <ArrowUpRight size={16} />
-          </button>
+          </a>
         </motion.div>
 
         {/* Left floating review */}
@@ -102,17 +105,23 @@ export default function HeroSection() {
           transition={{ delay: 0.4 }}
           className="mt-10 flex flex-col gap-4 sm:flex-row"
         >
-          <button className="group relative flex items-center justify-center gap-3 rounded-full bg-emerald-600 px-8 py-4 text-white shadow-lg transition hover:scale-105">
+          <a
+            href="/contact#contact"
+            className="group relative flex items-center justify-center gap-3 rounded-full bg-emerald-600 px-8 py-4 text-white shadow-lg transition hover:scale-105"
+          >
             {/* pulse effect */}
-            <span className="absolute -left-1 -top-1 h-3 w-3 animate-ping rounded-full bg-lime-300"></span>
-            <Phone size={18} />
+            <span aria-hidden="true" className="absolute -left-1 -top-1 h-3 w-3 animate-ping rounded-full bg-lime-300"></span>
+            <Phone aria-hidden="true" size={18} />
             Book an intro call
-          </button>
+          </a>
 
-          <button className="flex items-center justify-center gap-3 rounded-full border border-emerald-200 bg-white px-8 py-4 font-medium text-emerald-700 transition hover:scale-105">
+          <a
+            href="/pricing"
+            className="flex items-center justify-center gap-3 rounded-full border border-emerald-200 bg-white px-8 py-4 font-medium text-emerald-700 transition hover:scale-105"
+          >
             View Pricing
-            <ArrowUpRight size={18} />
-          </button>
+            <ArrowUpRight aria-hidden="true" size={18} />
+          </a>
         </motion.div>
 
         {/* Social proof */}

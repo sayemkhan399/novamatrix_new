@@ -3,10 +3,6 @@ import { MessageCircle } from "lucide-react";
 export default function WhatsAppButton() {
   const phoneNumber = "8801768639060"; 
 
-  const handleClick = () => {
-    window.open(`https://wa.me/${phoneNumber}`, "_blank");
-  };
-
   return (
     <div className="group fixed bottom-6 right-6 z-50">
       
@@ -16,12 +12,15 @@ export default function WhatsAppButton() {
       </div>
 
       {/* WhatsApp Button */}
-      <button
-        onClick={handleClick}
+      <a
+        href={`https://wa.me/${phoneNumber}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with NovaMatrix on WhatsApp"
         className="flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-xl transition hover:scale-110 hover:bg-green-600"
       >
-        <MessageCircle size={24} />
-      </button>
+        <MessageCircle aria-hidden="true" size={24} />
+      </a>
     </div>
   );
 }

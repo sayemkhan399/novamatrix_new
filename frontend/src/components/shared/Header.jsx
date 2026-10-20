@@ -4,10 +4,10 @@ import logo from "../../assets/Nova.svg";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/About" },
-  { name: "Services", href: "/Services" },
-  { name: "Portfolio", href: "/Portfolio" },
-  { name: "Contact", href: "/Contact" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const Header = () => {
@@ -57,12 +57,14 @@ const Header = () => {
             <img
               src={logo}
               alt="NovaMatrix home"
+              width={1920}
+              height={1080}
               className="h-12 w-auto md:h-16"
             />
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
             {navigation.map((item) => (
               <a
                 key={item.name}
@@ -81,7 +83,7 @@ const Header = () => {
           <div className="flex items-center gap-3">
             {/* CTA */}
             <a
-              href="#contact"
+              href="/#contact"
               className="hidden sm:flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f95d04] via-[#f32e25] to-[#f1093f]  px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105"
             >
               Start Project
