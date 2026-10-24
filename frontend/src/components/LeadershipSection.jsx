@@ -42,6 +42,13 @@ const leaders = [
 // Employee Data - Only Image, Name, and Designation
 const employees = [
   {
+    name: "Talha Jubayer",
+    role: " Director of Public Relations",
+    image: "https://i.ibb.co.com/hFQS4PXs/Pi7-Passport-Photo-1.jpg",
+    imageWidth: 600,
+    imageHeight: 1000,
+  },
+  {
     name: "Kazi Naznin Akter",
     role: " Frontend Developer",
     image: "/images/leadership/naznin.webp",
