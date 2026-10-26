@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import useEmailJsForm from "../hooks/useEmailJsForm";
 import {
   ArrowUpRight,
   ChevronDown,
@@ -70,6 +71,13 @@ const fadeUp = {
 };
 
 export default function Contact() {
+  const {
+    handleSubmit,
+    isSending,
+    submissionMessage,
+    submissionError,
+  } = useEmailJsForm();
+
   return (
     <section id="contact" className="relative overflow-hidden bg-white py-16 md:py-32">
       {/* Background */}
@@ -126,7 +134,7 @@ export default function Contact() {
               Send a Message
             </h2>
 
-            <form className="mt-8 space-y-5">
+            <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
               {/* Row 1: Name & Email */}
               <div className="grid gap-5 md:grid-cols-2">
                 <label className="sr-only" htmlFor="contact-page-name">
@@ -138,6 +146,7 @@ export default function Contact() {
                   type="text"
                   placeholder="Your Name"
                   autoComplete="name"
+                  required
                   className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-4 text-gray-700 placeholder-gray-400 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
                 />
                 <label className="sr-only" htmlFor="contact-page-email">
@@ -149,6 +158,7 @@ export default function Contact() {
                   type="email"
                   placeholder="Email Address"
                   autoComplete="email"
+                  required
                   className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-4 text-gray-700 placeholder-gray-400 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
                 />
               </div>
@@ -169,12 +179,12 @@ export default function Contact() {
                     <option value="" disabled>
                       Select a Service
                     </option>
-                    <option value="web">Software Development</option>
-                    <option value="mobile">Mobile App Development</option>
-                    <option value="cloud">UI/UX Design</option>
-                    <option value="security">Graphic Design</option>
-                    <option value="consulting">Brand & Graphic Design</option>
-                    <option value="support">Software & Design Project</option>
+                    <option value="Software Development">Software Development</option>
+                    <option value="Mobile App Development">Mobile App Development</option>
+                    <option value="UI/UX Design">UI/UX Design</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="Brand & Graphic Design">Brand & Graphic Design</option>
+                    <option value="Software & Design Project">Software & Design Project</option>
                   </select>
                   <ChevronDown className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 </div>
@@ -193,12 +203,12 @@ export default function Contact() {
                     <option value="" disabled>
                       Select Budget Range
                     </option>
-                    <option value="<1k">Under $1,000</option>
-                    <option value="1k-2.5k">$1,000 - $2,500</option>
-                    <option value="2.5k-5k">$2,500 - $5,000</option>
-                    <option value="5k-10k">$5,000 - $10,000</option>
-                    <option value="10k+">$10,000+</option>
-                    <option value="discuss">Let's Discuss</option>
+                    <option value="Under $1,000">Under $1,000</option>
+                    <option value="$1,000 - $2,500">$1,000 - $2,500</option>
+                    <option value="$2,500 - $5,000">$2,500 - $5,000</option>
+                    <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                    <option value="$10,000+">$10,000+</option>
+                    <option value="Let's Discuss">Let's Discuss</option>
                   </select>
                   <ChevronDown className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 </div>
@@ -213,6 +223,7 @@ export default function Contact() {
                 name="subject"
                 type="text"
                 placeholder="Subject"
+                required
                 className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-4 text-gray-700 placeholder-gray-400 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
               />
 
@@ -225,17 +236,27 @@ export default function Contact() {
                 name="message"
                 rows={6}
                 placeholder="Tell us about your project..."
+                required
                 className="w-full resize-none rounded-2xl border border-gray-200 bg-white px-5 py-4 text-gray-700 placeholder-gray-400 outline-none transition-all focus:border-[#f32e25] focus:ring-4 focus:ring-[#f32e25]/10"
               />
 
               {/* Submit Button */}
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f95d04] via-[#f32e25] to-[#f1093f] px-8 py-4 font-semibold text-white shadow-lg shadow-[#f32e25]/20 transition-all hover:scale-105 hover:shadow-[#f32e25]/30"
+                disabled={isSending}
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f95d04] via-[#f32e25] to-[#f1093f] px-8 py-4 font-semibold text-white shadow-lg shadow-[#f32e25]/20 transition-all hover:scale-105 hover:shadow-[#f32e25]/30 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Send Message
+                {isSending ? "Sending..." : "Send Message"}
                 <Send size={18} />
               </button>
+              {submissionMessage && (
+                <p
+                  className={submissionError ? "text-sm text-red-600" : "text-sm text-emerald-700"}
+                  role={submissionError ? "alert" : "status"}
+                >
+                  {submissionMessage}
+                </p>
+              )}
             </form>
           </motion.div>
 

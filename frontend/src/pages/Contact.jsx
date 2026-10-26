@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import useEmailJsForm from "../hooks/useEmailJsForm";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,16 @@ export default function Contact() {
     subject: "",
     message: "",
   });
+  const { handleSubmit, isSending, submissionMessage, submissionError } =
+    useEmailJsForm(() =>
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      }),
+    );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,13 +28,6 @@ export default function Contact() {
       ...prev,
       [name]: value,
     }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
   };
 
   const contactInfo = [
@@ -82,6 +86,8 @@ export default function Contact() {
                 Send us a Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input type="hidden" name="service" value="General inquiry" />
+                <input type="hidden" name="budget" value="Not specified" />
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">
                     Full Name
@@ -158,10 +164,21 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all inline-flex items-center justify-center gap-2 hover:shadow-lg"
+                  disabled={isSending}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all inline-flex items-center justify-center gap-2 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Send Message <Send size={20} />
+                  {isSending ? "Sending..." : "Send Message"} <Send size={20} />
                 </button>
+                {submissionMessage && (
+                  <p
+                    className={
+                      submissionError ? "text-sm text-red-600" : "text-sm text-emerald-700"
+                    }
+                    role={submissionError ? "alert" : "status"}
+                  >
+                    {submissionMessage}
+                  </p>
+                )}
               </form>
             </motion.div>
 

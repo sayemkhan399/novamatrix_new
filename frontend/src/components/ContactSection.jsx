@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import useEmailJsForm from "../hooks/useEmailJsForm";
 
 import {
   FaFacebookF,
@@ -14,6 +15,13 @@ const fadeUp = {
 };
 
 export default function ContactSection() {
+  const {
+    handleSubmit,
+    isSending,
+    submissionMessage,
+    submissionError,
+  } = useEmailJsForm();
+
   return (
     <section id="contact" className="bg-[#f7fffa] px-4 py-20 md:px-8">
       <div className="mx-auto max-w-7xl">
@@ -114,7 +122,7 @@ export default function ContactSection() {
               Send a message
             </h3>
 
-            <form className="space-y-5 text-black">
+            <form className="space-y-5 text-black" onSubmit={handleSubmit}>
               <label className="sr-only" htmlFor="contact-name">
                 Your name
               </label>
@@ -124,6 +132,7 @@ export default function ContactSection() {
                 type="text"
                 placeholder="Your Name"
                 autoComplete="name"
+                required
                 className="w-full rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
               />
 
@@ -136,6 +145,7 @@ export default function ContactSection() {
                 type="email"
                 placeholder="Email Address"
                 autoComplete="email"
+                required
                 className="w-full rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
               />
 
@@ -144,7 +154,7 @@ export default function ContactSection() {
               </label>
               <input
                 id="contact-project-type"
-                name="projectType"
+                name="service"
                 type="text"
                 placeholder="Project Type"
                 className="w-full rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
@@ -158,16 +168,29 @@ export default function ContactSection() {
                 name="message"
                 rows={5}
                 placeholder="Tell us about your project..."
+                required
                 className="w-full resize-none rounded-2xl bg-[#f8faf8] px-5 py-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
               />
 
+              <input type="hidden" name="budget" value="Not specified" />
+              <input type="hidden" name="subject" value="Home page inquiry" />
+
               <button
                 type="submit"
-                className="flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-4 text-sm font-medium text-white transition hover:bg-emerald-700"
+                disabled={isSending}
+                className="flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-4 text-sm font-medium text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Send Message
+                {isSending ? "Sending..." : "Send Message"}
                 <ArrowUpRight size={16} />
               </button>
+              {submissionMessage && (
+                <p
+                  className={submissionError ? "text-sm text-red-600" : "text-sm text-emerald-700"}
+                  role={submissionError ? "alert" : "status"}
+                >
+                  {submissionMessage}
+                </p>
+              )}
             </form>
           </motion.div>
         </div>
