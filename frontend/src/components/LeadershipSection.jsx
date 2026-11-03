@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, Mail } from "lucide-react";
 
+import talha from "../assets/talha.jpeg"
+
 // Note: Ensure your Tailwind config has a 'glass-shimmer' animation defined.
 
 const leaders = [
@@ -44,7 +46,7 @@ const employees = [
   {
     name: "Talha Jubayer",
     role: " Director of Public Relations",
-    image: "https://i.ibb.co.com/hFQS4PXs/Pi7-Passport-Photo-1.jpg",
+    image: talha,
     imageWidth: 600,
     imageHeight: 1000,
   },
