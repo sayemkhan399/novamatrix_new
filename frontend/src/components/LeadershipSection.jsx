@@ -8,7 +8,7 @@ import talha from "../assets/talha.jpeg"
 const leaders = [
   {
     name: "Md. Sayem Khan",
-    role: "CEO",
+    role: "Founder & CEO",
     description:
       "Leading product strategy, modern UI systems, and scalable digital experiences for ambitious brands.",
     image: "/images/leadership/sayem.webp",
@@ -19,7 +19,7 @@ const leaders = [
   },
   {
     name: "Shahriar Shishir",
-    role: "Founder",
+    role: "Founder & CTO",
     description:
       "Focused on innovation, business growth, and building high-performing digital solutions worldwide.",
     image: "/images/leadership/shishir.webp",
