@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import App from "./App.jsx";
+import Loader from "./components/shared/Loader.jsx";
 import "./index.css";
 
 const loadPage = (importPage) => {
@@ -47,13 +48,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Suspense
       fallback={
-        <main
-          className="flex min-h-screen items-center justify-center"
-          role="status"
-          aria-label="Loading page"
-        >
-          Loading NovaMatrix...
-        </main>
+        <Loader fullScreen label="Loading NovaMatrix..." />
       }
     >
       <RouterProvider router={router} />
