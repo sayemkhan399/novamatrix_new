@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, Mail } from "lucide-react";
 
-import talha from "../assets/talha.jpeg"
+import talha from "../assets/talha.jpeg";
+import sayem from "../assets/sayem.png";
+import shishir from "../assets/shishir.png";
+import mukim from "../assets/mukim.jpg";
 
 // Note: Ensure your Tailwind config has a 'glass-shimmer' animation defined.
 
@@ -11,7 +14,7 @@ const leaders = [
     role: "Founder & CEO",
     description:
       "Leading product strategy, modern UI systems, and scalable digital experiences for ambitious brands.",
-    image: "/images/leadership/sayem.webp",
+    image: sayem,
     imageWidth: 1000,
     imageHeight: 1407,
     linkedin: "https://www.linkedin.com/in/md-sayem-khan-ab0a09286",
@@ -22,7 +25,7 @@ const leaders = [
     role: "Founder & CTO",
     description:
       "Focused on innovation, business growth, and building high-performing digital solutions worldwide.",
-    image: "/images/leadership/shishir.webp",
+    image: shishir,
     imageWidth: 1000,
     imageHeight: 1334,
     linkedin: "https://www.linkedin.com/in/shahriarshishir",
@@ -33,7 +36,7 @@ const leaders = [
     role: "Head of Engineering",
     description:
       "Specialized in scalable architecture, cloud systems, and premium web application development.",
-    image: "/images/leadership/mahadin.webp",
+    image: mukim,
     imageWidth: 1000,
     imageHeight: 1093,
     linkedin: "https://www.linkedin.com/in/mahdin-islam-mukim/",
